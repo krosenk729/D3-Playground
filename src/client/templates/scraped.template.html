@@ -11,6 +11,8 @@
 			<h3>The Onion Articles</h3>
 			<div class="card-columns">
 				<div ng-repeat="article in $ctrl.onions" class="card">
+					<button class="save-article" ng-if="!article.saved" ng-click="$ctrl.saveArticle(article)">Save</button>
+					<div class="save-article" ng-if="article.saved">Saved!</div>
 					<img class="card-img-top" src="{{article.img}}" alt="{{article.title}}">
 					<div class="card-body">
 						<h6 class="card-title">{{article.title}}</h6>
@@ -23,6 +25,8 @@
 			<h3>NOT The Onion Articles</h3>
 			<div class="card-columns">
 				<div ng-repeat="article in $ctrl.notonions" class="card">
+					<button class="save-article" ng-if="!article.saved" ng-click="$ctrl.saveArticle(article)">Save</button>
+					<div class="save-article" ng-if="article.saved">Saved!</div>
 					<img class="card-img-top" src="{{article.img}}" alt="{{article.title}}">
 					<div class="card-body">
 						<h6 class="card-title">{{article.title}}</h6>

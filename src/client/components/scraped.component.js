@@ -16,5 +16,16 @@ angular.module("scrapedArticles", []).component("scrapedArticles", {
 		this.spoil = function(){
 			this.spoiled = true;
 		}
+
+		this.saveArticle = function(article){
+			console.log(article);
+			$http({
+				url: "/api/article/",
+				method: "POST",
+				data: {...article}
+			}).then( data => {
+				article.saved = true;
+			});
+		}
 	}
 });

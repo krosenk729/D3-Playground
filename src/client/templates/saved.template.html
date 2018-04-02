@@ -8,7 +8,7 @@
 			<div ng-repeat="article in $ctrl.saved" class="card" data-id="{{article._id}}">
 				<img class="card-img-top" src="{{article.img || 'http://lorempixel.com/400/400/cats'}}" alt="{{article.title}}">
 				<div class="card-body">
-					<button type="button" class="delete-article" ng-click="$ctrl.unsaveArticle(article._id)"></button>
+					<button type="button" class="delete-article" ng-click="$ctrl.unsaveArticle(article._id)">Unsave</button>
 					<a class="card-link" target="_blank" href="{{article.link}}">
 						<h6 class="card-title">{{article.title}}</h6>
 					</a>

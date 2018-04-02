@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 // Create ArticleSchema object
 const ArticleSchema = new Schema({
 	title: {
-		type: String
+		type: String,
+		unique: true
 	},
 	img: {
 		type: String
