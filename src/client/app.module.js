@@ -4,9 +4,7 @@ angular.module("onionQuiz", [
 	"savedArticles",
 	"scrapedArticles"
 ]).config(["$routeProvider", function($routeProvider){
-	$routeProvider.when("/", {
-		template: "<div>teestttttinggggg</div>"
-	}).when("/quiz", {
+	$routeProvider.when("/quiz", {
 		template: "<quiz></quiz>"
 	}).when("/scraped", {
 		template: "<scraped-articles></scraped-articles>"
