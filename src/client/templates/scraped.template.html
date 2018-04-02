@@ -1,30 +1,34 @@
-<div class="container-fluid">
+<div>
 	<div class="jumbotron">
 		<h1><span class="clip clip1">Spoiler Alert</span></h1>
 		<p class="lead">Here are all the scraped articles from The Onion and Not The Onion</p>
 	</div>
-	<main class="container animate-if" ng-if="!$ctrl.spoiled">
+	<main class="container animate-if px-4 center" ng-if="!$ctrl.spoiled">
 		<button class="btn" ng-click="$ctrl.spoil()">I Agree To Be Spoiled</button>
 	</main>
-	<main class="container animate-if row" ng-if="$ctrl.spoiled">
-		<section class="onion-links card-columns col-12 col-md-6">
+	<main class="scraped-wrapper animate-if" ng-if="$ctrl.spoiled">
+		<section class="onion-links">
 			<h3>The Onion Articles</h3>
-			<div ng-repeat="article in $ctrl.onions" class="card">
-				<img class="card-img-top" src="{{article.img}}" alt="{{article.title}}">
-				<div class="card-body">
-					<h6 class="card-title">{{article.title}}</h6>
-					<a class="card-link" target="_blank" href="{{article.link}}">Read Article >></a>
+			<div class="card-columns">
+				<div ng-repeat="article in $ctrl.onions" class="card">
+					<img class="card-img-top" src="{{article.img}}" alt="{{article.title}}">
+					<div class="card-body">
+						<h6 class="card-title">{{article.title}}</h6>
+						<a target="_blank" href="{{article.link}}">Read Article >></a>
+					</div>
 				</div>
 			</div>
 		</section>
-		<section class="not-the-onion-links card-columns col-12 col-md-6">
+		<section class="not-the-onion-links">
 			<h3>NOT The Onion Articles</h3>
-			<div ng-repeat="article in $ctrl.notonions" class="card">
-				<img class="card-img-top" src="{{article.img}}" alt="{{article.title}}">
-				<div class="card-body">
-					<h6 class="card-title">{{article.title}}</h6>
-					<a class="card-link" target="_blank" href="{{article.link}}">Read Article >></a>
-					<a class="card-link" target="_new" href="{{article.comment_link}}">See Reddit Comments>></a>
+			<div class="card-columns">
+				<div ng-repeat="article in $ctrl.notonions" class="card">
+					<img class="card-img-top" src="{{article.img}}" alt="{{article.title}}">
+					<div class="card-body">
+						<h6 class="card-title">{{article.title}}</h6>
+						<a target="_blank" href="{{article.link}}">Read Article >></a>
+						<a target="_blank" href="{{article.comment_link}}">See Reddit Comments>></a>
+					</div>
 				</div>
 			</div>
 		</section>

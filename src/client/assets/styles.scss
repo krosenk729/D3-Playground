@@ -32,6 +32,39 @@ $c-orange: #df7e24;
 // ==================================================
 // Layout & Resets
 
+.center{
+	text-align: center;
+}
+
+.card-columns{
+	column-count: 2;
+}
+
+.scraped-wrapper{
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+
+	& > section{
+		flex-basis: 100%;
+		margin: 1em;
+		padding: 1em;
+		border: 2px solid black;
+
+		h3{
+			text-align: center;
+		}
+
+		a{
+			display: block;
+		}
+	}
+
+	@media screen and (max-width: 1200px){
+		flex-wrap: wrap;
+	}
+}
+
 // ==================================================
 // Animations https://docs.angularjs.org/api/ng/directive/ngIf
 

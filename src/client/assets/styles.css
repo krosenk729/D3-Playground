@@ -1,0 +1,35 @@
+.center {
+  text-align: center; }
+
+.card-columns {
+  column-count: 2; }
+
+.scraped-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-around; }
+  .scraped-wrapper > section {
+    flex-basis: 100%;
+    margin: 1em;
+    padding: 1em;
+    border: 2px solid black; }
+    .scraped-wrapper > section h3 {
+      text-align: center; }
+    .scraped-wrapper > section a {
+      display: block; }
+  @media screen and (max-width: 1200px) {
+    .scraped-wrapper {
+      flex-wrap: wrap; } }
+
+.animate-if {
+  -webkit-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -ms-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+  .animate-if.ng-enter {
+    opacity: 0; }
+  .animate-if.ng-leave {
+    opacity: 1; }
+
+/*# sourceMappingURL=styles.css.map */
