@@ -5,11 +5,11 @@ angular.module("scrapedArticles", []).component("scrapedArticles", {
 		this.onions = [];
 		this.notonions = [];
 
-		$http.get('/api/rnto').then( data => {
+		$http.get("/api/rnto").then( data => {
 			this.notonions = data.data.splice(0, 6);
 		});
 
-		$http.get('/api/to').then( data => {
+		$http.get("/api/to").then( data => {
 			this.onions = data.data.slice(0, 6);
 		});
 

@@ -119,6 +119,18 @@ router
 	});
 
 })
+.put("/comment/:commentid", function(req, res){
+	console.log("PUT REQUEST FOR... " + req.params.commentid);
+	console.log(req.body);
+	db.Comment.findOneAndUpdate({_id: req.params.commentid}, {$set: {text: req.body.text}})
+	.then(data => {
+		res.json(data);
+	})
+	.catch(err => {
+		res.json(err);
+	});
+
+})
 .delete("/comment/:commentid", function(req, res){
 	console.log(req.body);
 	db.Comment.create(req.body)
