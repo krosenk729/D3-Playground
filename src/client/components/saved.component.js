@@ -57,5 +57,16 @@ angular.module("savedArticles", []).component("savedArticles", {
 			});
 		}
 
+		this.unsaveArticle = function(articleId){
+			$http({
+				url: `/api/article/${articleId}`,
+				method: 'DELETE'
+			}).then(data => {
+				this.saved.forEach((article, index, arr) => {
+					if(article._id === articleId){ arr.splice(index, 1) }
+				});
+			});
+		}
+
 	}
 });

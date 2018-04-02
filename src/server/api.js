@@ -62,6 +62,7 @@ router
 
 // =============================================================
 // Mongo, Mongoose CRUD 
+
 const db = require("../models");
 
 mongoose.Promise = Promise;
@@ -97,6 +98,17 @@ router
 
 	db.Article.find({_id: req.params.articleid})
 	.populate("comments")
+	.then(data => {
+		res.json(data);
+	})
+	.catch(err => {
+		res.json(err);
+	});
+
+})
+.delete("/article/:articleid", function(req, res){
+
+	db.Article.findOneAndRemove({_id: req.params.articleid})
 	.then(data => {
 		res.json(data);
 	})
