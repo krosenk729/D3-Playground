@@ -28,7 +28,10 @@ app.get("*", function(req, res){
 	res.sendFile( path.join(__dirname, "src", "client", "index.html") );
 });
 
-// Listen on port 3000
-app.listen(3000, function() {
+// =============================================================
+// Starting Server
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, function() {
   console.log("App running on port 3000!");
 });
