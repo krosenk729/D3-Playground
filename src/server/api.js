@@ -64,9 +64,9 @@ router
 // Mongo, Mongoose CRUD 
 
 const db = require("../models");
-
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/my_db";
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/my_db",{
+mongoose.connect(MONGODB_URI,{
 	useMongoClient: true
 });
 
