@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Scraped Onions</title>
+	
+	<meta name=description content="Guess the article source from scraped Onion / Not The Onion articles">
+	<meta charset=utf-8>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+  	<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.min.js"></script>
+
+	<!-- App Scripts -->
+	<script src="app.module.js"></script>
+	<!-- <script src="app.component.js"></script> -->
+	<script src="nav/nav.component.js"></script>
+	<script src="quiz/quiz.module.js"></script>
+	<script src="quiz/quiz.component.js"></script>
+	<script src="saved/saved.module.js"></script>
+	<script src="saved/saved.component.js"></script>
+	<script src="scraped/scraped.module.js"></script>
+	<script src="scraped/scraped.component.js"></script>
+</head>
+<body ng-app="onionQuiz">
+	<app-nav></app-nav>
+	<div ng-view></div>
+</body>
+</html>

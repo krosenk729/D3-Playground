@@ -1,0 +1,34 @@
+$c-green-l: #bce480;
+$c-green-m: #179900;
+$c-green-d: #305000;
+$c-grey-l: #e6e6e6;
+$c-grey-m: #928d8c;
+$c-grey-d: #212121;
+$c-purple: #6532c7;
+$c-blue: #2f6eb8;
+$c-aqua: #0899ac;
+$c-orange: #df7e24;
+
+
+// ==================================================
+// Mixins
+
+@mixin transition($which: all, $time: 1s, $how: ease-in-out){
+	-webkit-transition: $which $time $how;
+	-moz-transition: $which $time $how;
+	-ms-transition: $which $time $how;
+	-o-transition: $which $time $how;
+	transition: $which $time $how;
+}
+
+@mixin gradient-bg($left, $right: darken($left, 25%)){
+	background: $left; // backup
+	background: -webkit-linear-gradient($left, $right);
+	background: -o-linear-gradient($left, $right);
+	background: -moz-linear-gradient($left, $right);
+	background: linear-gradient($left, $right);
+}
+
+// ==================================================
+// Layout & Resets
+
