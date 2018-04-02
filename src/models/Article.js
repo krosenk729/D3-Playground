@@ -12,6 +12,9 @@ const ArticleSchema = new Schema({
 	comment_link: {
 		type: String
 	},
+	desc: {
+		type: String
+	},
 	link: {
 		type: String
 	},
