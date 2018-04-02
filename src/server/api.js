@@ -133,10 +133,7 @@ router
 })
 .delete("/comment/:commentid", function(req, res){
 	console.log(req.body);
-	db.Comment.create(req.body)
-	.then(data => {
-		return db.Article.findOneAndUpdate({_id: req.params.articleid}, {$push: {comments: data._id}}, {new: true});
-	})
+	db.Comment.findOneAndRemove({_id: req.params.commentid})
 	.then(data => {
 		res.json(data);
 	})

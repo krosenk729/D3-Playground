@@ -11,8 +11,7 @@ angular.module("savedArticles", []).component("savedArticles", {
 		});
 
 		this.saveComment = function(articleId){
-			console.log(articleId);
-			console.log(this.newComment);
+			if(!this.newComment){ return }
 			$http({
 				url: `/api/comment/${articleId}`,
 				method: 'POST',
@@ -33,20 +32,29 @@ angular.module("savedArticles", []).component("savedArticles", {
 		}
 
 		this.updateComment = function(commentId, commentText){
-			console.log(commentId, commentText);
+			if(!commentText){ return }
 			$http({
 				url: `/api/comment/${commentId}`,
 				method: 'PUT',
 				data: {
 					text: commentText
 				}
-			}).then( data => {
-				console.log("cool ", data);
 			});
 		}
 
-		this.deleteComment = function(commentId){
-			console.log(commentId);
+		this.deleteComment = function(commentId, articleId){
+			// delete comment
+			// then find the article it is attached to
+			// and delete from its comments 
+			$http({
+				url: `/api/comment/${commentId}`,
+				method: 'DELETE'
+			}).then(data => {
+				const articleUpdate = this.saved.filter(article => article._id === articleId)[0];
+				articleUpdate.comments.forEach((comment, index, arr) => {
+					if(comment._id === commentId){ arr.splice(index, 1) }
+				});
+			});
 		}
 
 	}
