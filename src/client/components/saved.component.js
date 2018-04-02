@@ -38,7 +38,7 @@ angular.module("savedArticles", []).component("savedArticles", {
 				url: `/api/comment/${commentId}`,
 				method: 'PUT',
 				data: {
-					text: this.commentText
+					text: commentText
 				}
 			}).then( data => {
 				console.log("cool ", data);
