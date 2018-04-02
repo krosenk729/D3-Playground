@@ -1,9 +1,6 @@
 angular.module("scrapedArticles", []).component("scrapedArticles", {
 	templateUrl: "templates/scraped.template.html",
 	controller: function ScrapedArticlesController($http){
-
-		console.log('scraped component');
-		
 		this.spoiled = false;
 		this.onions = [];
 		this.notonions = [];
@@ -13,7 +10,6 @@ angular.module("scrapedArticles", []).component("scrapedArticles", {
 		});
 
 		$http.get('/api/to').then( data => {
-			console.log(data.data);
 			this.onions = data.data;
 		});
 
