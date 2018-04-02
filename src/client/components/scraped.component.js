@@ -9,11 +9,12 @@ angular.module("scrapedArticles", []).component("scrapedArticles", {
 		this.notonions = [];
 
 		$http.get('/api/rnto').then( data => {
-			this.notonions = data;
+			this.notonions = data.data;
 		});
 
 		$http.get('/api/to').then( data => {
-			this.onions = data;
+			console.log(data.data);
+			this.onions = data.data;
 		});
 
 		this.spoil = function(){
