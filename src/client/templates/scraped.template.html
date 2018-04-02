@@ -6,22 +6,24 @@
 	<main class="container animate-if" ng-if="!$ctrl.spoiled">
 		<button class="btn" ng-click="$ctrl.spoil()">I Agree To Be Spoiled</button>
 	</main>
-	<main class="container animate-if" ng-if="$ctrl.spoiled">
-		<section class="onion-links">
+	<main class="container animate-if row" ng-if="$ctrl.spoiled">
+		<section class="onion-links card-columns col-12 col-md-6">
+			<h3>The Onion Articles</h3>
 			<div ng-repeat="article in $ctrl.onions" class="card">
 				<img class="card-img-top" src="{{article.img}}" alt="{{article.title}}">
 				<div class="card-body">
-					<h5 class="card-title">{{article.title}}</h5>
-					<a class="card-link" target="_new" href="{{article.link}}">Real News? Really? Read it >></a>
+					<h6 class="card-title">{{article.title}}</h6>
+					<a class="card-link" target="_new" href="{{article.link}}">Read Article >></a>
 				</div>
 			</div>
 		</section>
-		<section class="not-the-onion-links card-columns">
+		<section class="not-the-onion-links card-columns col-12 col-md-6">
+			<h3>NOT The Onion Articles</h3>
 			<div ng-repeat="article in $ctrl.notonions" class="card">
 				<img class="card-img-top" src="{{article.img}}" alt="{{article.title}}">
 				<div class="card-body">
-					<h5 class="card-title">{{article.title}}</h5>
-					<a class="card-link" target="_new" href="{{article.link}}">Read it >></a>
+					<h6 class="card-title">{{article.title}}</h6>
+					<a class="card-link" target="_new" href="{{article.link}}">Read Article >></a>
 					<a class="card-link" target="_new" href="{{article.comment_link}}">See Reddit Comments>></a>
 				</div>
 			</div>
