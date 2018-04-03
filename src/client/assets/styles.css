@@ -1,13 +1,13 @@
 .center {
   text-align: center; }
 
-button.primary-btn, nav.top-nav .play a, button.delete-article {
+button.primary-btn, nav.top-nav .play a {
   background: #ff008c;
   border: 2px solid #ff008c;
   color: #FFFFFF;
   padding: .65em 1em;
   border-radius: 8.5px; }
-  button.primary-btn:active, nav.top-nav .play a:active, button.delete-article:active, button.primary-btn:hover, nav.top-nav .play a:hover, button.delete-article:hover {
+  button.primary-btn:active, nav.top-nav .play a:active, button.primary-btn:hover, nav.top-nav .play a:hover {
     background: transparent;
     border: 2px solid #ff008c;
     text-decoration: none;
@@ -15,20 +15,20 @@ button.primary-btn, nav.top-nav .play a, button.delete-article {
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
 
-button.primary-green-btn, button.save-article, div.save-article {
+button.primary-green-btn, button.save-article, div.save-article, .saved-wrapper .comment-body button {
   background: #2a5941;
   border: 2px solid #2a5941;
   color: #FFFFFF;
   padding: .65em 1em;
   border-radius: 8.5px; }
-  button.primary-green-btn:active, button.save-article:active, div.save-article:active, button.primary-green-btn:hover, button.save-article:hover, div.save-article:hover {
+  button.primary-green-btn:active, button.save-article:active, div.save-article:active, .saved-wrapper .comment-body button:active, button.primary-green-btn:hover, button.save-article:hover, div.save-article:hover, .saved-wrapper .comment-body button:hover {
     background: rgba(42, 89, 65, 0.5);
     border: 2px solid #2a5941;
     text-decoration: none;
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
 
-button.secondary-btn {
+button.secondary-btn, .saved-wrapper button.delete-article {
   background: transparent;
   border: 2px solid #ff008c;
   color: #ff008c;
@@ -39,7 +39,7 @@ button.secondary-btn {
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out; }
-  button.secondary-btn:active, button.secondary-btn:hover {
+  button.secondary-btn:active, .saved-wrapper button.delete-article:active, button.secondary-btn:hover, .saved-wrapper button.delete-article:hover {
     background: #e6007e;
     border: 2px solid #ff008c;
     color: #FFFFFF;
@@ -64,6 +64,11 @@ button.link-btn {
     border: 2px solid transparent;
     text-decoration: underline; }
 
+button:disabled {
+  background: inherit !important;
+  border-color: inherit !important;
+  color: inherit !important; }
+
 a {
   color: #2a5941; }
   a:active, a:hover {
@@ -74,7 +79,6 @@ a {
   background: transparent; }
 
 .full-cover {
-  border: 2px solid;
   position: fixed;
   top: 3.5em;
   bottom: -2em;
@@ -94,7 +98,7 @@ nav.top-nav {
   justify-content: space-between;
   align-items: center;
   padding: .5em 1em;
-  margin-bottom: .25em;
+  z-index: 1;
   background: #08351E;
   color: #e8efef; }
   nav.top-nav a {
@@ -125,13 +129,33 @@ button.save-article, div.save-article {
   top: 0;
   right: 0; }
 
-button.delete-article {
-  position: absolute;
-  top: 0;
-  right: 0; }
+.saved-wrapper .article-body {
+  display: flex;
+  flex-direction: row-reverse; }
+  .saved-wrapper .article-body > div {
+    padding: 1em;
+    flex-basis: 50%; }
+  .saved-wrapper .article-body img {
+    width: 100%;
+    border-radius: 8.5px;
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
+.saved-wrapper .comment-body {
+  padding: 1em;
+  margin-bottom: 1.5em;
+  font-size: small; }
+  .saved-wrapper .comment-body button {
+    padding: .55em .4em;
+    float: right; }
+  .saved-wrapper .comment-body form {
+    padding: 1em; }
+  .saved-wrapper .comment-body label {
+    display: block;
+    width: 100%; }
 
 .scraped-wrapper {
   width: 100%;
+  max-width: none;
   display: flex;
   justify-content: space-around; }
   .scraped-wrapper > section {

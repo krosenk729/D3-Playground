@@ -107,6 +107,12 @@ button.link-btn{
 	}
 }
 
+button:disabled{
+	background: inherit !important;
+	border-color: inherit !important;
+	color: inherit !important;
+}
+
 a{
 	color: $c-green-m;
 
@@ -122,7 +128,6 @@ a{
 }
 
 .full-cover {
-	border: 2px solid;
 	position: fixed;
 	top: 3.5em;
 	bottom: -2em;
@@ -149,7 +154,8 @@ nav.top-nav{
 	justify-content: space-between;
 	align-items: center;
 	padding: .5em 1em;
-	margin-bottom: .25em;
+	z-index: 1;
+	// margin-bottom: .25em;
 
 	background: $c-green-d;
 	color: $c-offwhite;
@@ -204,20 +210,59 @@ button.save-article{
 	@extend button.primary-green-btn;
 }
 
+// "Saved" message should appear the same 
 div.save-article{
 	@extend button.save-article;
 }
 
-button.delete-article{
-	position: absolute;
-	top: 0;
-	right: 0;
 
-	@extend button.primary-btn;
+.saved-wrapper{
+	.article-body{
+		display: flex;
+		flex-direction: row-reverse;
+
+		& > div {
+			padding: 1em;
+			flex-basis: 50%;
+		}
+
+		img{
+			width: 100%;
+			border-radius: 8.5px;
+			@include boxshadow;
+		}
+	}
+
+	button.delete-article{
+		@extend button.secondary-btn;
+	}
+
+	.comment-body{
+		padding: 1em;
+		margin-bottom: 1.5em;
+		font-size: small;
+
+		button{
+			@extend button.primary-green-btn;
+			padding: .55em .4em;
+			float: right;
+		}
+
+		form{
+			padding: 1em;
+		}
+
+		label{
+			display: block;
+			width: 100%;
+		}
+
+	}
 }
 
 .scraped-wrapper{
 	width: 100%;
+	max-width: none;
 	display: flex;
 	justify-content: space-around;
 
