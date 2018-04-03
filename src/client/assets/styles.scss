@@ -95,7 +95,6 @@ button.link-btn{
 	border: 2px solid transparent;
 	color: $c-pink;
 	padding: .65em 1em;
-	border-radius: 8.5px;
 	@include transition;
 
 	&:active,
@@ -109,13 +108,13 @@ button.link-btn{
 
 button:disabled{
 	background: inherit !important;
-	border-color: inherit !important;
+	border: inherit !important;
 	color: inherit !important;
 }
 
 a{
 	color: $c-green-m;
-
+	&:visited,
 	&:active,
 	&:hover{
 		color: $c-green-l;
@@ -125,6 +124,8 @@ a{
 
 .jumbotron{
 	background: transparent;
+	border-radius: 0;
+	@include boxshadow;
 }
 
 .full-cover {
@@ -170,7 +171,7 @@ nav.top-nav{
 	}
 
 	.play a {
-		@extend button.primary-btn;
+		@extend button, .primary-btn;
 		color: $c-white !important;
 	}
 
@@ -196,7 +197,7 @@ nav.top-nav{
 
 
 // ==================================================
-// Cards 
+// Cards for Saved & Scraped Pages
 
 .card-columns{
 	column-count: 2;
@@ -207,12 +208,12 @@ button.save-article{
 	top: 0;
 	right: 0;
 
-	@extend button.primary-green-btn;
+	@extend button, .primary-green-btn;
 }
 
 // "Saved" message should appear the same 
 div.save-article{
-	@extend button.save-article;
+	@extend button, .save-article;
 }
 
 
@@ -231,20 +232,28 @@ div.save-article{
 			border-radius: 8.5px;
 			@include boxshadow;
 		}
+
+		h4{
+			font-weight: bold;
+		}
 	}
 
 	button.delete-article{
-		@extend button.secondary-btn;
+		position: absolute;
+		top: 0;
+		right: 0;
+		@extend button, .primary-btn;
 	}
 
-	.comment-body{
+	.comment-wrap{
 		padding: 1em;
 		margin-bottom: 1.5em;
 		font-size: small;
 
 		button{
-			@extend button.primary-green-btn;
+			@extend button, .primary-green-btn;
 			padding: .55em .4em;
+			margin: .5em;
 			float: right;
 		}
 

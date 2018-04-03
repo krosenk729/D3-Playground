@@ -19,6 +19,9 @@ const ArticleSchema = new Schema({
 	link: {
 		type: String
 	},
+	isOnion: {
+		type: Boolean
+	},
 	comments: [{
 			type: Schema.Types.ObjectId,
 			ref: "Comment"
