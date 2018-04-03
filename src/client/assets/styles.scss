@@ -33,7 +33,7 @@ $c-offwhite: #e8efef;
 }
 
 // ==================================================
-// Layout & Utils
+// Layout, Gen Styles & Utils
 
 .center{
 	text-align: center;
@@ -123,7 +123,7 @@ a{
 }
 
 .jumbotron{
-	background: transparent;
+	background: transparent; 
 	border-radius: 0;
 	@include boxshadow;
 }
@@ -144,6 +144,11 @@ a{
 	h1, h2, h3, h4, a, div, button{
 		padding: 1em;
 	}
+}
+
+.cog-bg{
+	background: url('/assets/overlay-bg.png') top left no-repeat;
+	background-size: contain;
 }
 
 // ==================================================
