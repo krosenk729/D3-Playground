@@ -2,10 +2,10 @@
 	<div class="jumbotron">
 		<h1><span class="clip clip1">Spoiler Alert</span></h1>
 		<p class="lead">Here are all the scraped articles from The Onion and Not The Onion</p>
-	</div>
-	<main class="container animate-if px-4 center" ng-if="!$ctrl.spoiled">
+	<div class="container animate-if px-4 center" ng-if="!$ctrl.spoiled">
 		<button class="btn" ng-click="$ctrl.spoil()">I Agree To Be Spoiled</button>
-	</main>
+	</div>
+	</div>
 	<main class="scraped-wrapper animate-if" ng-if="$ctrl.spoiled">
 		<section class="onion-links">
 			<h3>The Onion Articles</h3>
