@@ -13,8 +13,8 @@
 			</div>
 	</div>
 	<div class="container full-cover" ng-if="$ctrl.resultShow">
-			<h4 ng-if="$ctrl.currentQuestion.guessWasRight">Way to get it correct!</h4>
-			<h4 ng-if="!$ctrl.currentQuestion.guessWasRight">Way to get it correct!</h4>
+			<h4 ng-if="$ctrl.currentPlay">Way to get it correct!</h4>
+			<h4 ng-if="!$ctrl.currentPlay">Yeah, No. You Guessed Wrong</h4>
 			<a href="{{$ctrl.currentQuestion.link}}" target="_blank">{{$ctrl.currentQuestion.title}}</a>
 			<div>
 				<button ng-click="$ctrl.nextQuestion()">Next Question</button>

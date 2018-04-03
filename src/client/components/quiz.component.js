@@ -5,7 +5,8 @@ angular.module("quiz", []).component("quiz", {
 		this.started = false;
 		this.resultShow = false;
 		this.allQuestions = [];
-		this.currentQuestion = [];
+		this.currentQuestion = {};
+		this.currentPlay = '';
 
 		this.$onInit = function(){
 			const self = this;
@@ -24,7 +25,8 @@ angular.module("quiz", []).component("quiz", {
 				notonions["data"].forEach(article => article.isOnion = false);
 				onions["data"].forEach(article => article.isOnion = true);
 
-				self.allQuestions = [...notonions.data, ...onions.data].sort((a, b) => 0.5 - Math.random() > 0);
+				self.allQuestions = [...notonions.data, ...onions.data];
+				self.allQuestions.sort((a, b) => 0.5 - Math.random() > 0);
 				self.currentQuestion = self.allQuestions.pop();
 				return true
 			}
@@ -33,13 +35,14 @@ angular.module("quiz", []).component("quiz", {
 
 		this.startGame = function(){
 			if(this.allQuestions.length < 1){ return }
+			// this.allQuestions.sort((a, b) => 0.5 - Math.random() > 0);
 			this.started = true;
 			console.log(this.allQuestions);
 		}
 
 		this.checkOnion = function(isOnionGuess){
 			console.log(isOnionGuess === this.currentQuestion.isOnion);
-			this.currentQuestion.guessWasRight = isOnionGuess === this.currentQuestion.isOnion;
+			this.currentPlay = isOnionGuess === this.currentQuestion.isOnion;
 			this.resultShow = true;
 
 			console.log("Show results", this.resultShow);
@@ -47,21 +50,18 @@ angular.module("quiz", []).component("quiz", {
 
 		this.nextQuestion = function(){
 			this.resultShow = false;
+			this.currentPlay = '';
 			this.currentQuestion = this.allQuestions.pop();
 		}
 
 		this.saveCurrentArticle = function(){
+			let data = {... this.currentQuestion};
 			$http({
 				url: "/api/article/",
 				method: "POST",
-				data: {
-					title: $this.currentQuestion.title,
-					img: $this.currentQuestion.img,
-					link: $this.currentQuestion.link,
-					comment_link: $this.currentQuestion.comment_link
-				}
+				data
 			}).then( data => {
-				currentQuestion.saved = true;
+				this.currentQuestion.saved = true;
 			});
 		}
 	}
