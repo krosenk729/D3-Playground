@@ -4,25 +4,14 @@ $c-green-d: #08351E;
 $c-pink: #ff008c;
 $c-tan: #dac7a6;
 $c-grey: #2d1d1e;
+$c-white: #FFFFFF;
 $c-offwhite: #e8efef;
-
-
-/* $c-green-l: #bce480;
-$c-green-m: #179900;
-$c-green-d: #305000;
-$c-grey-l: #e6e6e6;
-$c-grey-m: #928d8c;
-$c-grey-d: #212121;
-$c-purple: #6532c7;
-$c-blue: #2f6eb8;
-$c-aqua: #0899ac;
-$c-orange: #df7e24; */
 
 
 // ==================================================
 // Mixins
 
-@mixin transition($which: all, $time: 1s, $how: ease-in-out){
+@mixin transition($which: all, $time: 0.5s, $how: ease-in-out){
 	-webkit-transition: $which $time $how;
 	-moz-transition: $which $time $how;
 	-ms-transition: $which $time $how;
@@ -38,15 +27,193 @@ $c-orange: #df7e24; */
 	background: linear-gradient($left, $right);
 }
 
+@mixin boxshadow($horiz: 0, $vert: 2px, $blur: 5px, $col: rgba(0, 0, 0, 0.26)){
+	-webkit-box-shadow: $horiz $vert $blur $col;
+	box-shadow: $horiz $vert $blur $col;
+}
+
 // ==================================================
-// Layout & Resets
+// Layout & Utils
 
 .center{
 	text-align: center;
 }
 
+button.primary-btn{
+	background: $c-pink;
+	border: 2px solid $c-pink;
+	color: $c-white;
+	padding: .65em 1em;
+	border-radius: 8.5px;
+
+	&:active,
+	&:hover{
+		background: transparent;
+		border: 2px solid $c-pink;
+		text-decoration: none;
+		color: $c-pink;
+		@include boxshadow;
+	}
+}
+
+button.primary-green-btn{
+	background: $c-green-m;
+	border: 2px solid $c-green-m;
+	color: $c-white;
+	padding: .65em 1em;
+	border-radius: 8.5px;
+
+	&:active,
+	&:hover{
+		background: transparentize($c-green-m, .5);
+		border: 2px solid $c-green-m;
+		text-decoration: none;
+		@include boxshadow;
+	}
+}
+
+button.secondary-btn{
+	background: transparent;
+	border: 2px solid $c-pink;
+	color: $c-pink;
+	padding: .65em 1em;
+	border-radius: 8.5px;
+	@include transition;
+
+	&:active,
+	&:hover{
+		background: darken($c-pink, 5%);
+		border: 2px solid $c-pink;
+		color: $c-white;
+		text-decoration: none;
+		@include boxshadow;
+	}
+}
+
+button.link-btn{
+	background: transparent;
+	border: 2px solid transparent;
+	color: $c-pink;
+	padding: .65em 1em;
+	border-radius: 8.5px;
+	@include transition;
+
+	&:active,
+	&:hover{
+		color: $c-green-d;
+		background: transparent;
+		border: 2px solid transparent;
+		text-decoration: underline;
+	}
+}
+
+a{
+	color: $c-green-m;
+
+	&:active,
+	&:hover{
+		color: $c-green-l;
+		transform: scale(1.1);
+	}
+}
+
+.jumbotron{
+	background: transparent;
+}
+
+.full-cover {
+	border: 2px solid;
+	position: fixed;
+	top: 3.5em;
+	bottom: -2em;
+	left: 0;
+	right: 0;
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	h1, h2, h3, h4, a, div, button{
+		padding: 1em;
+	}
+}
+
+// ==================================================
+// Nav Menu
+
+nav.top-nav{
+	min-height: 3.5em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: .5em 1em;
+	margin-bottom: .25em;
+
+	background: $c-green-d;
+	color: $c-offwhite;
+
+	a {
+		color: $c-offwhite;
+		margin: 0 .5em;
+
+		&:hover{
+			color: $c-white;
+		}
+	}
+
+	.play a {
+		@extend button.primary-btn;
+		color: $c-white !important;
+	}
+
+	@media screen and (max-width: 620px){
+		flex-wrap: wrap;
+		padding: .5em;
+
+		.play{
+			padding: .5em;
+		}
+
+		& > div:last-of-type{
+			display: flex;
+			flex-direction:column;
+
+			a{
+				margin: .5em;
+				padding: .5em;
+			}
+		}
+	}
+}
+
+
+// ==================================================
+// Cards 
+
 .card-columns{
 	column-count: 2;
+}
+
+button.save-article{
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	@extend button.primary-green-btn;
+}
+
+div.save-article{
+	@extend button.save-article;
+}
+
+button.delete-article{
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	@extend button.primary-btn;
 }
 
 .scraped-wrapper{

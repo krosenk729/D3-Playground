@@ -1,9 +1,9 @@
 <div>
-	<div class="jumbotron">
+	<div class="jumbotron" ng-class="{'full-cover' : !$ctrl.spoiled}">
 		<h1><span class="clip clip1">Spoiler Alert</span></h1>
 		<p class="lead">Here are all the scraped articles from The Onion and Not The Onion</p>
 	<div class="container animate-if px-4 center" ng-if="!$ctrl.spoiled">
-		<button class="btn" ng-click="$ctrl.spoil()">I Agree To Be Spoiled</button>
+		<button class="primary-btn" ng-click="$ctrl.spoil()">I Agree To Be Spoiled</button>
 	</div>
 	</div>
 	<main class="scraped-wrapper animate-if" ng-if="$ctrl.spoiled">

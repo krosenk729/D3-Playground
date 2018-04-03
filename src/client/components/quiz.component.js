@@ -28,14 +28,14 @@ angular.module("quiz", []).component("quiz", {
 				self.allQuestions = [...notonions.data, ...onions.data];
 				self.allQuestions.sort((a, b) => 0.5 - Math.random() > 0);
 				self.currentQuestion = self.allQuestions.pop();
-				return true
+				return true;
 			}
 			getQuestions().then(()=> self.ready = true );
 		}
 
 		this.startGame = function(){
 			if(this.allQuestions.length < 1){ return }
-			// this.allQuestions.sort((a, b) => 0.5 - Math.random() > 0);
+			this.allQuestions.sort((a, b) => 0.5 - Math.random() > 0);
 			this.started = true;
 			console.log(this.allQuestions);
 		}
