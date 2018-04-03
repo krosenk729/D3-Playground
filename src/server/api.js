@@ -30,7 +30,7 @@ router
 		
 		$("[data-subreddit='nottheonion'].thing").each((iterator, element) => {
 			scraped.push({
-				title: $(element).find(".top-matter .title a").text(),
+				title: $(element).find(".top-matter a.title ").text(),
 				img: $(element).find(".thumbnail img").attr("src"),
 				comment_link: "https://www.reddit.com" + $(element).find(".flat-list.buttons .first a").attr("href"),
 				link: $(element).find("a.thumbnail").attr("href")
@@ -48,7 +48,7 @@ router
 		
 		$(".post-wrapper > article").each((iterator, element) => {
 			scraped.push({
-				title: $(element).find("a.js_entry-link").text(),
+				title: $(element).find(".entry-title a.js_entry-link").text(),
 				img: $(element).find("picture > source").attr("data-srcset"),
 				link: $(element).find("a.js_entry-link").attr("href")
 			});
