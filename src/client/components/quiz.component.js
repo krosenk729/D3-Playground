@@ -9,10 +9,12 @@ angular.module("quiz", []).component("quiz", {
 
 		this.$onInit = function(){
 			const self = this;
+			self.ready = false;
 			async function getNotOnion(){
 				return $http.get("/api/rnto");
 			}
 			async function getOnion(){
+				self.ready = true;
 				return $http.get("/api/to");
 			}
 
@@ -23,18 +25,16 @@ angular.module("quiz", []).component("quiz", {
 				onions["data"].forEach(article => article.isOnion = true);
 
 				self.allQuestions = [...notonions.data, ...onions.data].sort((a, b) => 0.5 - Math.random() > 0);
-
-				self.ready = true;
 				self.currentQuestion = self.allQuestions.pop();
-				console.log(self.ready);
+				return true
 			}
-			getQuestions();
-
-			setTimeout( ()=> console.log(this.ready), 10000);
+			getQuestions().then(()=> self.ready = true );
 		}
 
 		this.startGame = function(){
+			if(this.allQuestions.length < 1){ return }
 			this.started = true;
+			console.log(this.allQuestions);
 		}
 
 		this.checkOnion = function(isOnionGuess){
@@ -46,16 +46,22 @@ angular.module("quiz", []).component("quiz", {
 		}
 
 		this.nextQuestion = function(){
+			this.resultShow = false;
 			this.currentQuestion = this.allQuestions.pop();
 		}
 
-		this.saveArticle = function(article){
+		this.saveCurrentArticle = function(){
 			$http({
 				url: "/api/article/",
 				method: "POST",
-				data: {...article}
+				data: {
+					title: $this.currentQuestion.title,
+					img: $this.currentQuestion.img,
+					link: $this.currentQuestion.link,
+					comment_link: $this.currentQuestion.comment_link
+				}
 			}).then( data => {
-				article.saved = true;
+				currentQuestion.saved = true;
 			});
 		}
 	}
