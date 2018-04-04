@@ -1,78 +1,33 @@
+@import url("https://fonts.googleapis.com/css?family=Inconsolata:400,700|Poppins:400,900");
+@keyframes shrinkNspin {
+  0% {
+    transform: scale(8); }
+  25% {
+    transform: scale(1); }
+  50% {
+    transform: rotate(360deg); }
+  75% {
+    transform: rotate(-360deg); } }
+* {
+  font-family: 'Inconsolata', monospace;
+  color: #08351E; }
+
+h1, h2, h3, h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900; }
+
+.clip {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  color: #41765B;
+  background-image: url("/assets/green4.jpg");
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; }
+
 .center {
   text-align: center; }
-
-button.primary-btn, nav.top-nav .play a, div.primary-btn.save-article, .saved-wrapper div.delete-article.save-article, .saved-wrapper button.delete-article, .saved-wrapper .comment-wrap button.primary-btn {
-  background: #ff008c;
-  border: 2px solid #ff008c;
-  color: #FFFFFF;
-  padding: .65em 1em;
-  border-radius: 8.5px; }
-  button.primary-btn:active, nav.top-nav .play a:active, div.primary-btn.save-article:active, .saved-wrapper div.delete-article.save-article:active, .saved-wrapper button.delete-article:active, button.primary-btn:hover, nav.top-nav .play a:hover, div.primary-btn.save-article:hover, .saved-wrapper div.delete-article.save-article:hover, .saved-wrapper button.delete-article:hover {
-    background: transparent;
-    border: 2px solid #ff008c;
-    text-decoration: none;
-    color: #ff008c;
-    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
-
-button.primary-green-btn, nav.top-nav .play a.primary-green-btn, button.save-article, nav.top-nav .play a.save-article, div.save-article, .saved-wrapper button.save-article.delete-article, .saved-wrapper div.delete-article.save-article, .saved-wrapper .comment-wrap div.save-article, .saved-wrapper button.primary-green-btn.delete-article, .saved-wrapper .comment-wrap nav.top-nav .play a, nav.top-nav .play .saved-wrapper .comment-wrap a, .saved-wrapper .comment-wrap button {
-  background: #2a5941;
-  border: 2px solid #2a5941;
-  color: #FFFFFF;
-  padding: .65em 1em;
-  border-radius: 8.5px; }
-  button.primary-green-btn:active, nav.top-nav .play a.primary-green-btn:active, button.save-article:active, nav.top-nav .play a.save-article:active, div.save-article:active, .saved-wrapper .comment-wrap nav.top-nav .play a:active, nav.top-nav .play .saved-wrapper .comment-wrap a:active, .saved-wrapper .comment-wrap button:active, button.primary-green-btn:hover, nav.top-nav .play a.primary-green-btn:hover, button.save-article:hover, nav.top-nav .play a.save-article:hover, div.save-article:hover, .saved-wrapper .comment-wrap nav.top-nav .play a:hover, nav.top-nav .play .saved-wrapper .comment-wrap a:hover, .saved-wrapper .comment-wrap button:hover {
-    background: rgba(42, 89, 65, 0.5);
-    border: 2px solid #2a5941;
-    text-decoration: none;
-    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
-
-button.secondary-btn, nav.top-nav .play a.secondary-btn, div.secondary-btn.save-article, .saved-wrapper button.secondary-btn.delete-article, .saved-wrapper .comment-wrap button.secondary-btn {
-  background: transparent;
-  border: 2px solid #ff008c;
-  color: #ff008c;
-  padding: .65em 1em;
-  border-radius: 8.5px;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out; }
-  button.secondary-btn:active, nav.top-nav .play a.secondary-btn:active, div.secondary-btn.save-article:active, button.secondary-btn:hover, nav.top-nav .play a.secondary-btn:hover, div.secondary-btn.save-article:hover {
-    background: #e6007e;
-    border: 2px solid #ff008c;
-    color: #FFFFFF;
-    text-decoration: none;
-    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
-
-button.link-btn, nav.top-nav .play a.link-btn, div.link-btn.save-article, .saved-wrapper button.link-btn.delete-article, .saved-wrapper .comment-wrap button.link-btn {
-  background: transparent;
-  border: 2px solid transparent;
-  color: #ff008c;
-  padding: .65em 1em;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out; }
-  button.link-btn:active, nav.top-nav .play a.link-btn:active, div.link-btn.save-article:active, button.link-btn:hover, nav.top-nav .play a.link-btn:hover, div.link-btn.save-article:hover {
-    color: #08351E;
-    background: transparent;
-    border: 2px solid transparent;
-    text-decoration: underline; }
-
-button:disabled, nav.top-nav .play a:disabled, div.save-article:disabled, .saved-wrapper button.delete-article:disabled, .saved-wrapper .comment-wrap button:disabled {
-  background: inherit !important;
-  border: inherit !important;
-  color: inherit !important; }
-
-a {
-  color: #2a5941; }
-  a:visited, a:active, a:hover {
-    color: #41765B;
-    transform: scale(1.1); }
 
 .jumbotron {
   background: transparent;
@@ -91,12 +46,96 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center; }
-  .full-cover h1, .full-cover h2, .full-cover h3, .full-cover h4, .full-cover a, .full-cover div, .full-cover button, .full-cover nav.top-nav .play a, nav.top-nav .play .full-cover a, .full-cover div.save-article, .full-cover .saved-wrapper button.delete-article, .saved-wrapper .full-cover button.delete-article, .full-cover .saved-wrapper .comment-wrap button, .saved-wrapper .comment-wrap .full-cover button {
+  .full-cover h1, .full-cover h2, .full-cover h3, .full-cover h4, .full-cover a, .full-cover div, .full-cover button, .full-cover div.save-article, .full-cover nav.top-nav .play a, nav.top-nav .play .full-cover a, .full-cover .saved-wrapper button.delete-article, .saved-wrapper .full-cover button.delete-article, .full-cover .saved-wrapper .comment-wrap button, .saved-wrapper .comment-wrap .full-cover button {
     padding: 1em; }
 
 .cog-bg {
   background: url("/assets/overlay-bg.png") top left no-repeat;
   background-size: contain; }
+
+button.primary-btn, div.primary-btn.save-article, .saved-wrapper div.delete-article.save-article, nav.top-nav .play a, .saved-wrapper button.delete-article, .saved-wrapper .comment-wrap button.primary-btn {
+  background: #ff008c;
+  border: 2px solid #ff008c;
+  color: #FFFFFF;
+  padding: .65em 1em;
+  border-radius: 8.5px; }
+  button.primary-btn:active, div.primary-btn.save-article:active, .saved-wrapper div.delete-article.save-article:active, nav.top-nav .play a:active, .saved-wrapper button.delete-article:active, button.primary-btn:hover, div.primary-btn.save-article:hover, .saved-wrapper div.delete-article.save-article:hover, nav.top-nav .play a:hover, .saved-wrapper button.delete-article:hover {
+    background: transparent;
+    border: 2px solid #ff008c;
+    text-decoration: none;
+    color: #ff008c;
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
+
+button.primary-green-btn, button.save-article, div.save-article, nav.top-nav .play a.save-article, .saved-wrapper button.save-article.delete-article, .saved-wrapper div.delete-article.save-article, .saved-wrapper .comment-wrap div.save-article, nav.top-nav .play a.primary-green-btn, .saved-wrapper button.primary-green-btn.delete-article, .saved-wrapper .comment-wrap nav.top-nav .play a, nav.top-nav .play .saved-wrapper .comment-wrap a, .saved-wrapper .comment-wrap button {
+  background: #2a5941;
+  border: 2px solid #2a5941;
+  color: #FFFFFF;
+  padding: .65em 1em;
+  border-radius: 8.5px; }
+  button.primary-green-btn:active, button.save-article:active, div.save-article:active, nav.top-nav .play a.save-article:active, nav.top-nav .play a.primary-green-btn:active, .saved-wrapper .comment-wrap nav.top-nav .play a:active, nav.top-nav .play .saved-wrapper .comment-wrap a:active, .saved-wrapper .comment-wrap button:active, button.primary-green-btn:hover, button.save-article:hover, div.save-article:hover, nav.top-nav .play a.save-article:hover, nav.top-nav .play a.primary-green-btn:hover, .saved-wrapper .comment-wrap nav.top-nav .play a:hover, nav.top-nav .play .saved-wrapper .comment-wrap a:hover, .saved-wrapper .comment-wrap button:hover {
+    background: rgba(42, 89, 65, 0.5);
+    border: 2px solid #2a5941;
+    text-decoration: none;
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
+
+button.secondary-btn, div.secondary-btn.save-article, nav.top-nav .play a.secondary-btn, .saved-wrapper button.secondary-btn.delete-article, .saved-wrapper .comment-wrap button.secondary-btn {
+  background: transparent;
+  border: 2px solid #ff008c;
+  color: #ff008c;
+  padding: .65em 1em;
+  border-radius: 8.5px;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out; }
+  button.secondary-btn:active, div.secondary-btn.save-article:active, nav.top-nav .play a.secondary-btn:active, button.secondary-btn:hover, div.secondary-btn.save-article:hover, nav.top-nav .play a.secondary-btn:hover {
+    background: #e6007e;
+    border: 2px solid #ff008c;
+    color: #FFFFFF;
+    text-decoration: none;
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
+
+button.link-btn, div.link-btn.save-article, nav.top-nav .play a.link-btn, .saved-wrapper button.link-btn.delete-article, .saved-wrapper .comment-wrap button.link-btn {
+  background: transparent;
+  border: 2px solid transparent;
+  color: #ff008c;
+  padding: .65em 1em;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out; }
+  button.link-btn:active, div.link-btn.save-article:active, nav.top-nav .play a.link-btn:active, button.link-btn:hover, div.link-btn.save-article:hover, nav.top-nav .play a.link-btn:hover {
+    color: #08351E;
+    background: transparent;
+    border: 2px solid transparent;
+    text-decoration: underline; }
+
+button:disabled, div.save-article:disabled, nav.top-nav .play a:disabled, .saved-wrapper button.delete-article:disabled, .saved-wrapper .comment-wrap button:disabled {
+  background: inherit !important;
+  border: inherit !important;
+  color: inherit !important; }
+
+a {
+  color: #2a5941; }
+  a:visited, a:active, a:hover {
+    color: #41765B;
+    transform: scale(1.1); }
+
+button.play-btn, div.play-btn.save-article, nav.top-nav .play a.play-btn, .saved-wrapper button.play-btn.delete-article, .saved-wrapper .comment-wrap button.play-btn {
+  animation-name: shrinkNspin;
+  animation-duration: 4s;
+  animation-delay: 0.25s; }
+
+button.save-article, div.save-article, nav.top-nav .play a.save-article, .saved-wrapper button.save-article.delete-article, .saved-wrapper div.delete-article.save-article, .saved-wrapper .comment-wrap button.save-article, .saved-wrapper .comment-wrap div.save-article {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0 0 0 8.5px; }
 
 nav.top-nav {
   min-height: 3.5em;
@@ -127,13 +166,14 @@ nav.top-nav {
           margin: .5em;
           padding: .5em; } }
 
+.card {
+  border-color: #dac7a6;
+  border-radius: 0; }
+  .card .card-img-top {
+    border-radius: 0; }
+
 .card-columns {
   column-count: 2; }
-
-button.save-article, nav.top-nav .play a.save-article, div.save-article, .saved-wrapper button.save-article.delete-article, .saved-wrapper div.delete-article.save-article, .saved-wrapper .comment-wrap button.save-article, .saved-wrapper .comment-wrap div.save-article {
-  position: absolute;
-  top: 0;
-  right: 0; }
 
 .saved-wrapper .article-body {
   display: flex;
@@ -148,7 +188,7 @@ button.save-article, nav.top-nav .play a.save-article, div.save-article, .saved-
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
   .saved-wrapper .article-body h4 {
     font-weight: bold; }
-.saved-wrapper nav.top-nav .play a.delete-article, nav.top-nav .play .saved-wrapper a.delete-article, .saved-wrapper div.delete-article.save-article, .saved-wrapper button.delete-article {
+.saved-wrapper div.delete-article.save-article, .saved-wrapper nav.top-nav .play a.delete-article, nav.top-nav .play .saved-wrapper a.delete-article, .saved-wrapper button.delete-article {
   position: absolute;
   top: 0;
   right: 0; }
@@ -156,7 +196,7 @@ button.save-article, nav.top-nav .play a.save-article, div.save-article, .saved-
   padding: 1em;
   margin-bottom: 1.5em;
   font-size: small; }
-  .saved-wrapper .comment-wrap nav.top-nav .play a, nav.top-nav .play .saved-wrapper .comment-wrap a, .saved-wrapper .comment-wrap div.save-article, .saved-wrapper .comment-wrap button {
+  .saved-wrapper .comment-wrap div.save-article, .saved-wrapper .comment-wrap nav.top-nav .play a, nav.top-nav .play .saved-wrapper .comment-wrap a, .saved-wrapper .comment-wrap button {
     padding: .55em .4em;
     margin: .5em;
     float: right; }
@@ -175,7 +215,8 @@ button.save-article, nav.top-nav .play a.save-article, div.save-article, .saved-
     flex-basis: 100%;
     margin: 1em;
     padding: 1em;
-    border: 2px solid black; }
+    border: 8px solid #08351E;
+    border-image: url("/assets/green3.jpg") 40 round; }
     .scraped-wrapper > section h3 {
       text-align: center; }
     .scraped-wrapper > section a {

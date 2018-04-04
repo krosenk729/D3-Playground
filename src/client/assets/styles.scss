@@ -1,3 +1,6 @@
+// ////////////////////////////////////////
+// Mongoose 
+
 $c-green-l: #41765B;
 $c-green-m: #2a5941;
 $c-green-d: #08351E;
@@ -32,11 +35,70 @@ $c-offwhite: #e8efef;
 	box-shadow: $horiz $vert $blur $col;
 }
 
+@keyframes shrinkNspin{
+	0%{ transform: scale(8) }
+	25%{ transform: scale(1) }
+	50%{ transform: rotate(360deg) }
+	75%{ transform: rotate(-360deg) }
+}
+
 // ==================================================
 // Layout, Gen Styles & Utils
 
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:400,700|Poppins:400,900');
+
+*{
+	font-family: 'Inconsolata', monospace;
+	color: $c-green-d;
+}
+
+h1, h2, h3, h4{
+	font-family: 'Poppins', sans-serif;
+	font-weight: 900;
+}
+.clip {
+	font-family: 'Poppins', sans-serif;
+	font-weight: 900;
+	color: $c-green-l;
+	background-image: url('/assets/green4.jpg');
+	background-size: cover;
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
 .center{
 	text-align: center;
+}
+
+
+.jumbotron{
+	background: transparent; 
+	border-radius: 0;
+	@include boxshadow;
+}
+
+.full-cover {
+	position: fixed;
+	top: 3.5em;
+	bottom: -2em;
+	left: 0;
+	right: 0;
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	h1, h2, h3, h4, a, div, button{
+		padding: 1em;
+	}
+}
+
+.cog-bg{
+	background: url('/assets/overlay-bg.png') top left no-repeat;
+	background-size: contain;
 }
 
 button.primary-btn{
@@ -122,34 +184,25 @@ a{
 	}
 }
 
-.jumbotron{
-	background: transparent; 
-	border-radius: 0;
-	@include boxshadow;
+button.play-btn{
+	animation-name: shrinkNspin; 
+	animation-duration: 4s;
+	animation-delay: 0.25s;
 }
 
-.full-cover {
-	position: fixed;
-	top: 3.5em;
-	bottom: -2em;
-	left: 0;
+button.save-article{
+	@extend button, .primary-green-btn;
+	position: absolute;
+	top: 0;
 	right: 0;
-	overflow: hidden;
-
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-
-	h1, h2, h3, h4, a, div, button{
-		padding: 1em;
-	}
+	border-radius: 0 0 0 8.5px;
 }
 
-.cog-bg{
-	background: url('/assets/overlay-bg.png') top left no-repeat;
-	background-size: contain;
+// "Saved" message should appear the same 
+div.save-article{
+	@extend button, .save-article;
 }
+
 
 // ==================================================
 // Nav Menu
@@ -204,23 +257,18 @@ nav.top-nav{
 // ==================================================
 // Cards for Saved & Scraped Pages
 
+.card{
+	border-color: $c-tan;
+	border-radius: 0;
+
+	.card-img-top{
+		border-radius: 0;
+	}
+}
+
 .card-columns{
 	column-count: 2;
 }
-
-button.save-article{
-	position: absolute;
-	top: 0;
-	right: 0;
-
-	@extend button, .primary-green-btn;
-}
-
-// "Saved" message should appear the same 
-div.save-article{
-	@extend button, .save-article;
-}
-
 
 .saved-wrapper{
 	.article-body{
@@ -284,7 +332,8 @@ div.save-article{
 		flex-basis: 100%;
 		margin: 1em;
 		padding: 1em;
-		border: 2px solid black;
+		border: 8px solid $c-green-d;
+		border-image: url('/assets/green3.jpg') 40 round;
 
 		h3{
 			text-align: center;
