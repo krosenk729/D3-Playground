@@ -1,0 +1,40 @@
+<div>
+	<div class="jumbotron" ng-class="{'full-cover' : !$ctrl.spoiled}">
+		<h1>Spoiler <span class="clip">Alert</span></h1>
+		<p class="lead">Here are all the scraped articles from The Onion and Not The Onion</p>
+	<div class="container animate-if px-4 center" ng-if="!$ctrl.spoiled">
+		<button class="primary-btn" ng-click="$ctrl.spoil()">I Agree To Be Spoiled</button>
+	</div>
+	</div>
+	<main class="scraped-wrapper animate-if" ng-if="$ctrl.spoiled">
+		<section class="onion-links">
+			<h3>The Onion Articles</h3>
+			<div class="card-columns">
+				<div ng-repeat="article in $ctrl.onions" class="card">
+					<button class="save-article" ng-if="!article.saved" ng-click="$ctrl.saveArticle(article)">Save</button>
+					<div class="save-article" ng-if="article.saved">Saved!</div>
+					<img class="card-img-top" src="{{article.img}}" alt="{{article.title}}">
+					<div class="card-body">
+						<h6 class="card-title">{{article.title}}</h6>
+						<a target="_blank" href="{{article.link}}">Read Article >></a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="not-the-onion-links">
+			<h3>NOT The Onion Articles</h3>
+			<div class="card-columns">
+				<div ng-repeat="article in $ctrl.notonions" class="card">
+					<button class="save-article" ng-if="!article.saved" ng-click="$ctrl.saveArticle(article)">Save</button>
+					<div class="save-article" ng-if="article.saved">Saved!</div>
+					<img class="card-img-top" src="{{article.img}}" alt="{{article.title}}">
+					<div class="card-body">
+						<h6 class="card-title">{{article.title}}</h6>
+						<a target="_blank" href="{{article.link}}">Read Article >></a>
+						<a target="_blank" href="{{article.comment_link}}">See Reddit Comments>></a>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</div>

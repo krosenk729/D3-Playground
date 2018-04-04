@@ -1,0 +1,24 @@
+<div>
+	<div class="jumbotron full-cover" ng-show="!$ctrl.started">
+		<h1>The Onion? or <span class="clip">Not</span> The Onion?</h1>
+		<p class="lead">Guess if an article is made up by the staff at The Onion or if it is a real article submitted to Reddit's "Not The Onion" subreddit</p>
+			<button type="button" class="secondary-btn" ng-hide="$ctrl.ready" disabled>Loading...</button>
+			<button type="button" class="secondary-btn play-btn" ng-click="$ctrl.startGame()" ng-if="$ctrl.ready">Play!</button>
+	</div>
+	<div class="container full-cover" ng-if="$ctrl.started && !$ctrl.resultShow">
+			<h4>{{ $ctrl.currentQuestion.title }}</h4>
+			<div>
+				<button class="secondary-btn" ng-click="$ctrl.checkOnion(true)">The Onion</button>
+				<button class="secondary-btn" ng-click="$ctrl.checkOnion(false)">Not the Onion</button>
+			</div>
+	</div>
+	<div class="container full-cover" ng-if="$ctrl.resultShow">
+			<h4 ng-if="$ctrl.currentPlay">Way to get it correct!</h4>
+			<h4 ng-if="!$ctrl.currentPlay">Yeah, No. You Guessed Wrong</h4>
+			<a href="{{$ctrl.currentQuestion.link}}" target="_blank">{{$ctrl.currentQuestion.title}}</a>
+			<div>
+				<button class="secondary-btn" ng-click="$ctrl.nextQuestion()">Next Question</button>
+				<button class="link-btn" ng-if="!$ctrl.currentQuestion.saved" ng-click="$ctrl.saveCurrentArticle()">Save Article For Later</button><button ng-if="$ctrl.currentQuestion.saved" disabled>Saved For Later!</button>
+			</div>
+	</div>
+</div>
