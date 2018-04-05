@@ -7,6 +7,8 @@ Check out the project 👉 https://isonion.herokuapp.com/#/quiz
 - [MonogoDB mLab](https://mlab.com/)
 - [Cheerio](https://cheerio.js.org/)
 - [AngularJS 1.5](https://angularjs.org/)
+- [Mocha](https://mochajs.org/)
+- [Chai](http://www.chaijs.com/)
 
 ---
 
