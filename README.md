@@ -8,7 +8,7 @@ Check out the project 👉 https://isonion.herokuapp.com/#/quiz
 - [Cheerio](https://cheerio.js.org/)
 - [AngularJS 1.5](https://angularjs.org/)
 - [Mocha](https://mochajs.org/)
-- [Chai](http://www.chaijs.com/)
+- [Chai](http://www.chaijs.com/) && [Chai HTTP](http://www.chaijs.com/plugins/chai-http/)
 
 ---
 

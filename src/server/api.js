@@ -67,7 +67,8 @@ const db = require("../models");
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/my_db";
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI,{
-	useMongoClient: true
+	useMongoClient: true,
+	server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
 });
 
 router
