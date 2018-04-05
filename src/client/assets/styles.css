@@ -48,6 +48,9 @@ h1, h2, h3, h4 {
   align-items: center; }
   .full-cover h1, .full-cover h2, .full-cover h3, .full-cover h4, .full-cover a, .full-cover div, .full-cover button, .full-cover div.save-article, .full-cover nav.top-nav .play a, nav.top-nav .play .full-cover a, .full-cover .saved-wrapper button.delete-article, .saved-wrapper .full-cover button.delete-article, .full-cover .saved-wrapper .comment-wrap button, .saved-wrapper .comment-wrap .full-cover button {
     padding: 1em; }
+  @media screen and (max-width: 620px) {
+    .full-cover {
+      top: 9.5em; } }
 
 .cog-bg {
   background: url("/assets/overlay-bg.png") top left no-repeat;
