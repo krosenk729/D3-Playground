@@ -1,6 +1,6 @@
-angular.module("onionQuiz").component("appNav", {
+angular.module("onionQuiz").component("bottomNav", {
 	template: `
-	<nav class="top-nav">
+	<nav class="app-nav bottom-nav">
 	<div class="play">
 	<a href="#/quiz">Play "Guess The Onions"</a>
 	</div>

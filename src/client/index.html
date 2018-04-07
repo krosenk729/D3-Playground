@@ -19,13 +19,15 @@
 
 	<!-- App Scripts -->
 	<script src="app.module.js"></script>
-	<script src="nav/nav.component.js"></script>
+	<script src="nav/top-nav.component.js"></script>
+	<script src="nav/bottom-nav.component.js"></script>
 	<script src="quiz/quiz.component.js"></script>
 	<script src="saved/saved.component.js"></script>
 	<script src="scraped/scraped.component.js"></script>
 </head>
 <body ng-app="onionQuiz">
-	<app-nav></app-nav>
+	<top-nav></top-nav>
 	<div ng-view></div>
+	<bottom-nav></bottom-nav>
 </body>
 </html>
