@@ -3,33 +3,32 @@
 		<h1>Saved For L<span class="clip clip1">8</span>R</h1>
 		<p class="lead">Here are all the saved articles. That you can comment on. Or unsave!</p>
 	</div>
-	<main class="container saved-wrapper animate-if">
+	<article class="container saved-wrapper animate-if">
 		<div ng-repeat="article in $ctrl.saved" class="card" data-id="{{article._id}}">
-			<button type="button" class="delete-article" ng-click="$ctrl.unsaveArticle(article._id)">Unsave this article >></button>
-			<div class="article-body">
-				<div class="comment-wrap">
-					<img src="{{article.img || 'http://lorempixel.com/400/400/cats'}}" alt="{{article.title}}">
-				</div>
-				<div class="comment-wrap">
-					<a class="card-link" target="_blank" href="{{article.link}}">
-						<h4 class="card-title">{{article.title}}</h4>
-					</a>
-					<form ng-repeat="comment in article.comments" ng-submit="$ctrl.updateComment(comment._id, comment.text)">
-						<label>Comment:
-							<input type="text" name="comment" ng-model="comment.text" data-id="comment._id">
-						</label>
-						<button type="button" ng-click="$ctrl.deleteComment(comment._id, article._id)">Delete Comment</button>
-						<button type="submit">Save Updated Text</button>
-					</form>
-					<form ng-submit="$ctrl.saveComment(article._id, article.newComment)">
-						<label>New Comment:
-							<input type="text" name="comment" ng-model="article.newComment">
-						</label>
-						<button type="submit">Save Comment</button>
-					</form>
-				</div>
+			<div class="img-wrapper">
+				<button type="button" class="top-right" ng-click="$ctrl.unsaveArticle(article._id)">Unsave this article >></button>
+				<img src="{{article.img || 'http://lorempixel.com/400/400/cats'}}" alt="{{article.title}}">
 			</div>
-			
-		</div>
-	</main>
+			<div class="article-wrapper">
+				<h4 class="card-title">
+					<a class="card-link" target="_blank" href="{{article.link}}">
+						{{article.title}}
+					</a>
+				</h4>
+				<form ng-repeat="comment in article.comments" ng-submit="$ctrl.updateComment(comment._id, comment.text)">
+					<label>Comment:
+						<input type="text" name="comment" ng-model="comment.text" data-id="comment._id">
+					</label>
+					<button class="secondary-btn" type="submit">Save Updated Text</button>
+					<button class="link-btn" type="button" ng-click="$ctrl.deleteComment(comment._id, article._id)">Delete Comment</button>
+				</form>
+				<form ng-submit="$ctrl.saveComment(article._id, article.newComment)">
+					<label>New Comment:
+						<input type="text" name="comment" ng-model="article.newComment">
+					</label>
+					<button  class="primary-btn" type="submit">Save Comment</button>
+				</form>
+			</div> <!-- article wrap -->
+		</div> <!-- card -->
+	</article>
 </div>

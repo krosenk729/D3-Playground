@@ -54,7 +54,7 @@ main.container {
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
 
-button.primary-btn, nav .play a, div.primary-btn.save-article {
+button.primary-btn, div.primary-btn.top-right, nav .play a {
   background: #ff008c;
   border: 2px solid #ff008c;
   color: #FFFFFF;
@@ -65,7 +65,7 @@ button.primary-btn, nav .play a, div.primary-btn.save-article {
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out; }
-  button.primary-btn:active, nav .play a:active, div.primary-btn.save-article:active, button.primary-btn:hover, nav .play a:hover, div.primary-btn.save-article:hover {
+  button.primary-btn:active, div.primary-btn.top-right:active, nav .play a:active, button.primary-btn:hover, div.primary-btn.top-right:hover, nav .play a:hover {
     background: transparent;
     border: 2px solid #ff008c;
     text-decoration: none;
@@ -73,7 +73,7 @@ button.primary-btn, nav .play a, div.primary-btn.save-article {
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
 
-button.primary-green-btn, nav .play a.primary-green-btn, button.save-article, nav .play a.save-article, div.save-article {
+button.primary-green-btn, button.top-right, div.top-right, nav .play a.top-right, nav .play a.primary-green-btn {
   background: #2a5941;
   border: 2px solid #2a5941;
   color: #FFFFFF;
@@ -84,7 +84,7 @@ button.primary-green-btn, nav .play a.primary-green-btn, button.save-article, na
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out; }
-  button.primary-green-btn:active, nav .play a.primary-green-btn:active, button.save-article:active, nav .play a.save-article:active, div.save-article:active, button.primary-green-btn:hover, nav .play a.primary-green-btn:hover, button.save-article:hover, nav .play a.save-article:hover, div.save-article:hover {
+  button.primary-green-btn:active, button.top-right:active, div.top-right:active, nav .play a.top-right:active, nav .play a.primary-green-btn:active, button.primary-green-btn:hover, button.top-right:hover, div.top-right:hover, nav .play a.top-right:hover, nav .play a.primary-green-btn:hover {
     background: rgba(42, 89, 65, 0.5);
     border: 2px solid #2a5941;
     text-decoration: none;
@@ -92,7 +92,7 @@ button.primary-green-btn, nav .play a.primary-green-btn, button.save-article, na
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
 
-button.secondary-btn, nav .play a.secondary-btn, div.secondary-btn.save-article {
+button.secondary-btn, div.secondary-btn.top-right, nav .play a.secondary-btn {
   background: transparent;
   border: 2px solid #ff008c;
   color: #ff008c;
@@ -103,7 +103,7 @@ button.secondary-btn, nav .play a.secondary-btn, div.secondary-btn.save-article 
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out; }
-  button.secondary-btn:active, nav .play a.secondary-btn:active, div.secondary-btn.save-article:active, button.secondary-btn:hover, nav .play a.secondary-btn:hover, div.secondary-btn.save-article:hover {
+  button.secondary-btn:active, div.secondary-btn.top-right:active, nav .play a.secondary-btn:active, button.secondary-btn:hover, div.secondary-btn.top-right:hover, nav .play a.secondary-btn:hover {
     background: #e6007e;
     border: 2px solid #ff008c;
     text-decoration: none;
@@ -111,7 +111,7 @@ button.secondary-btn, nav .play a.secondary-btn, div.secondary-btn.save-article 
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
 
-button.link-btn, nav .play a.link-btn, div.link-btn.save-article {
+button.link-btn, div.link-btn.top-right, nav .play a.link-btn {
   background: transparent;
   border: 2px solid transparent;
   color: #ff008c;
@@ -122,7 +122,7 @@ button.link-btn, nav .play a.link-btn, div.link-btn.save-article {
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out; }
-  button.link-btn:active, nav .play a.link-btn:active, div.link-btn.save-article:active, button.link-btn:hover, nav .play a.link-btn:hover, div.link-btn.save-article:hover {
+  button.link-btn:active, div.link-btn.top-right:active, nav .play a.link-btn:active, button.link-btn:hover, div.link-btn.top-right:hover, nav .play a.link-btn:hover {
     background: transparent;
     border: 2px solid transparent;
     text-decoration: none;
@@ -130,7 +130,13 @@ button.link-btn, nav .play a.link-btn, div.link-btn.save-article {
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
 
-button:disabled, nav .play a:disabled, div.save-article:disabled {
+button.top-right, div.top-right, nav .play a.top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0 0 0 8.5px; }
+
+button:disabled, div.top-right:disabled, nav .play a:disabled {
   background: inherit !important;
   border: inherit !important;
   color: inherit !important; }
@@ -166,7 +172,7 @@ nav {
   nav .play a {
     color: #FFFFFF !important; }
 
-button.play-btn, nav .play a.play-btn, div.play-btn.save-article {
+button.play-btn, div.play-btn.top-right, nav .play a.play-btn {
   animation-name: shrinkNspin;
   animation-duration: 4s;
   animation-delay: 0.25s; }
@@ -189,10 +195,20 @@ button.play-btn, nav .play a.play-btn, div.play-btn.save-article {
   .scraped-wrapper section a {
     display: block; }
 
-button.save-article, nav .play a.save-article, div.save-article {
-  position: absolute;
-  top: 0;
-  right: 0;
-  border-radius: 0 0 0 8.5px; }
+.saved-wrapper .card {
+  display: flex;
+  flex-direction: row-reverse; }
+  .saved-wrapper .card .img-wrapper {
+    flex-basis: 35%; }
+    .saved-wrapper .card .img-wrapper img {
+      width: 100%; }
+  .saved-wrapper .card .article-wrapper {
+    flex-basis: 65%;
+    padding: 1em; }
+  @media screen and (max-width: 640px) {
+    .saved-wrapper .card {
+      flex-direction: column; }
+      .saved-wrapper .card input, .saved-wrapper .card label {
+        width: 100%; } }
 
 /*# sourceMappingURL=styles.css.map */

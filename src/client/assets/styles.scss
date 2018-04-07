@@ -139,6 +139,20 @@ button.link-btn{
 	@include buttonMaker(transparent, transparent, $c-pink, transparent, $c-green-d);
 }
 
+button.top-right{
+	@extend button, .primary-green-btn;
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-radius: 0 0 0 8.5px;
+}
+
+// "Saved" message should appear the same
+// as previous button
+div.top-right{
+	@extend button, .top-right;
+}
+
 button:disabled{
 	background: inherit !important;
 	border: inherit !important;
@@ -225,20 +239,30 @@ button.play-btn{
 	a{ display: block }
 }
 
-button.save-article{
-	@extend button, .primary-green-btn;
-	position: absolute;
-	top: 0;
-	right: 0;
-	border-radius: 0 0 0 8.5px;
-}
-
-// "Saved" message should appear the same 
-div.save-article{
-	@extend button, .save-article;
-}
-
 
 // ==================================================
 // Saved Articles
 
+.saved-wrapper .card{
+	display: flex;
+	flex-direction: row-reverse;
+
+	.img-wrapper{
+		flex-basis: 35%;
+
+		img{ width: 100%; }
+	}
+
+	.article-wrapper{
+		flex-basis: 65%;
+		padding: 1em;
+	}
+
+	@media screen and (max-width: 640px){
+		flex-direction: column;
+
+		input, label{
+			width: 100%;
+		}
+	}
+}
