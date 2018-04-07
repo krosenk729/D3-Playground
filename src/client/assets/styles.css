@@ -51,7 +51,8 @@ h1, h2, h3, h4 {
     padding: 1em; }
   @media screen and (max-width: 620px) {
     .full-cover {
-      top: 9.5em; } }
+      top: 9.5em;
+      position: inherit; } }
 
 .cog-bg {
   background: url("/assets/overlay-bg.png") top left no-repeat;
