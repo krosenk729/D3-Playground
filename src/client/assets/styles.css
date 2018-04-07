@@ -155,6 +155,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between; }
+  body div.ng-scope {
+    flex-basis: 100%; }
 
 nav {
   background: #08351E;
@@ -205,6 +207,8 @@ button.play-btn, div.play-btn.top-right, nav .play a.play-btn {
   .saved-wrapper .card .article-wrapper {
     flex-basis: 65%;
     padding: 1em; }
+  .saved-wrapper .card button[type="submit"]:active, .saved-wrapper .card div[type="submit"].top-right:active, .saved-wrapper .card nav .play a[type="submit"]:active, nav .play .saved-wrapper .card a[type="submit"]:active {
+    transform: scale(2); }
   @media screen and (max-width: 640px) {
     .saved-wrapper .card {
       flex-direction: column; }

@@ -178,6 +178,10 @@ body{
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
+	div.ng-scope{
+		flex-basis: 100%;
+	}
 }
 
 nav{
@@ -256,6 +260,12 @@ button.play-btn{
 	.article-wrapper{
 		flex-basis: 65%;
 		padding: 1em;
+	}
+
+	button[type="submit"]{
+		&:active{
+			transform: scale(2);
+		}
 	}
 
 	@media screen and (max-width: 640px){
