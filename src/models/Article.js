@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 const ArticleSchema = new Schema({
 	title: {
 		type: String,
-		unique: true
+		unique: true,
+		required: true
 	},
 	img: {
 		type: String
@@ -20,22 +21,15 @@ const ArticleSchema = new Schema({
 		type: String
 	},
 	isOnion: {
-		type: Boolean
+		type: Boolean,
+		default: false
 	},
 	comments: [{
-			type: Schema.Types.ObjectId,
-			ref: "Comment"
-		}]
+		type: Schema.Types.ObjectId,
+		ref: "Comment"
+	}]
 });
 
-let Article;
-try{
-	Article = mongoose.model("Article");
-} catch (err){
-	Article = mongoose.model("Article", ArticleSchema);
-}
-
-
 // Create model from schema 
-// const Article = mongoose.model("Article", ArticleSchema);
+const Article = mongoose.model("Article", ArticleSchema);
 module.exports = Article;
