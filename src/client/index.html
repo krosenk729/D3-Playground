@@ -47,10 +47,11 @@
 			const keys = Object.keys(data[0]);
 			console.log(colors, data, keys);
 
-			const barHeight = 20;
+			const barWidth = 20;
 			const barX = d3.scaleLinear()
-				.domain([0, data.length * barHeight * 4])
-				.range([0, data.reduce((t, i)=> Math.max(t, i.vowels),0)*100]);
+				.domain([0, data.length])
+				.range([0, data.length * barWidth * 4]);
+				console.log(data.length * barWidth * 4);
 			const barY = d3.scaleLinear();
 
 			console.log('barX', barX);
@@ -61,16 +62,16 @@
 				.data(data)
 				.enter()
 				.append('g')
-				.attr('transform', function(d, i){ return `translate(0, ${barX(i)})`})
+				.attr('transform', function(d, i){ return `translate(${barX(i)}, 0)`})
 				.selectAll('rect')
 				.data(function(data){
 					return ['vowels', 'caps', 'extras', 'nums'].map(function(key){return {key:key, val: data[key]} });
 				})
 				.enter()
 				.append('rect')
-				.attr('x', function(d, i){return barHeight*i})
+				.attr('x', function(d, i){return barWidth*i})
 				.attr('height', function(d){return d.val + 'px'})
-				.attr('width', barHeight + 'px')
+				.attr('width', barWidth + 'px')
 				.attr('fill', colors[0][0])
 				.text(function(d){return d.key});
 
