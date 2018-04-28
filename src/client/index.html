@@ -34,42 +34,23 @@
 			.then(blob => blob.json()),
 			fetch('/api/trends')
 			.then(blob => blob.json())
-			.then(data => data.slice(0, 10))
 		])
 		.then(res =>{
 			let [colors, data] = res;
-			console.log(colors, data);
-
-			let x0 = d3.scaleBand()
-				.rangeRound([0, 550])
-				.paddingInner(0.1);
-			x0.domain(data.map(function(d){return d.text}));
-
+			// console.log(colors, data);
 			d3.select('#a1')
-				.append('svg')
-				.selectAll('g')
-				.data(data)
+				.selectAll('div')
+				.data(data.slice(0, 10))
 				.enter()
-				.append('g')
-				.attr('transform', function(d){return `translate(${x0(d.text)}, 0)`})
-				.selectAll('rect')
-				.data(function(d){return data.slice(0, 1)})
-				.enter()
-				.append('rect')
-
-
-
-
-
-
-				// .style('width', function(d){return d.vowels * 20 + 'px'})
-				// .style('background', colors[0][1])
-				// .append('div')
-				// .style('width', function(d){return d.text.length + 'px'})
-				// .style('background', colors[0][0])
-				// .text(function(d){return d.text})
-				// .transition(t)
-				// .style('background', colors[0][1]);
+				.append('div')
+				.style('width', function(d){return d.vowels * 20 + 'px'})
+				.style('background', colors[0][1])
+				.append('div')
+				.style('width', function(d){return d.text.length + 'px'})
+				.style('background', colors[0][0])
+				.text(function(d){return d.text})
+				.transition(t)
+				.style('background', colors[0][1]);
 		});
 	</script>
 </body>
