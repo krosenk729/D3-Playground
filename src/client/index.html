@@ -61,7 +61,8 @@
 				})
 				.enter()
 				.append('rect')
-				.attr('width', function(d){return d.val + 'px'})
+				.attr('y', function(){return Math.random()*100})
+				.attr('width', function(d){return d.val*100 + 'px'})
 				.attr('height', '10px')
 				.attr('fill', colors[0][0])
 				.text(function(d){return d.key});
