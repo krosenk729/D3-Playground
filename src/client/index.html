@@ -47,11 +47,17 @@
 			const keys = Object.keys(data[0]);
 			console.log(colors, data, keys);
 
+			////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////
+
+			const barKeys = ['vowels', 'caps', 'katherines'];
+			const cardWidth = document.getElementById('a2').clientWidth;
 			const barWidth = 20;
 			const barX = d3.scaleLinear()
 				.domain([0, data.length])
-				.range([0, data.length * barWidth * 4]);
-				console.log(data.length * barWidth * 4);
+				.range([0, cardWidth]);
+				console.log(data.length * barWidth * barKeys.length);
 			const barY = d3.scaleLinear();
 
 			console.log('barX', barX);
@@ -65,7 +71,7 @@
 				.attr('transform', function(d, i){ return `translate(${barX(i)}, 0)`})
 				.selectAll('rect')
 				.data(function(data){
-					return ['vowels', 'caps', 'extras', 'nums'].map(function(key){return {key:key, val: data[key]} });
+					return barKeys.map(function(key){return {key:key, val: data[key]} });
 				})
 				.enter()
 				.append('rect')
@@ -77,20 +83,24 @@
 
 
 			////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////
 			d3.select('#a1')
 				.selectAll('div')
 				.data(data.slice(0, 10))
 				.enter()
 				.append('div')
+				.attr('class', 'bar__title')
 				.style('width', function(d){return d.text.length *10 + 'px'})
 				.style('background', colors[0][1])
 
 				.append('div')
-				.style('width', function(d){return d.vowels * 10 + 'px'})
-				.style('background', colors[0][0])
+				.attr('class', 'bar__extras')
+				.style('width', function(d){return (d.extras + d.nums) * 10 + 'px'})
+				.style('background', colors[0][1])
 				.text(function(d){return d.text})
 				.transition(t)
-				.style('background', colors[0][1]);
+				.style('background', colors[0][0]);
 		});
 	</script>
 </body>
