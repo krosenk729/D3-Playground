@@ -49,11 +49,11 @@
 
 			const barHeight = 20;
 			const barX = d3.scaleLinear()
-				.range([0, d3.max( data.map(function(d){return d.vowels}))])
-				.domain([0, data.length * barHeight * 4]);
+				.domain([0, data.length * barHeight * 4])
+				.range([0, data.reduce((t, i)=> Math.max(t, i.vowels),0)*100]);
 			const barY = d3.scaleLinear();
 
-			console.log(barX);
+			console.log('barX', barX);
 
 			d3.select('#a2')
 				.append('svg')
@@ -68,7 +68,7 @@
 				})
 				.enter()
 				.append('rect')
-				.attr('x', function(){return Math.random()*100})
+				.attr('x', function(d, i){return barHeight*i})
 				.attr('height', function(d){return d.val + 'px'})
 				.attr('width', barHeight + 'px')
 				.attr('fill', colors[0][0])
