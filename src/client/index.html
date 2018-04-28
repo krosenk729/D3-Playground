@@ -48,19 +48,23 @@
 			console.log(colors, data, keys);
 
 			d3.select('#a2')
-				.selectAll('div')
-				.data(data.slice(0, 10))
+				.append('svg')
+				.append('g')
+				.selectAll('g')
+				.data(data)
 				.enter()
-				.append('div')
-				.style('width', function(d){return d.vowels * 20 + 'px'})
-				.style('background', colors[2][1])
-
-				.append('div')
-				.style('width', function(d){return d.text.length + 'px'})
-				.style('background', colors[2][0])
-				.text(function(d){return d.text})
-				.transition(t)
-				.style('background', colors[2][1]);
+				.append('g')
+				.attr('transform', function(d){ return `translate(0, ${Math.random()*10})`})
+				.selectAll('rect')
+				.data(function(data){
+					return ['vowels', 'caps', 'extras', 'nums'].map(function(key){return {key:key, val: data[key]} });
+				})
+				.enter()
+				.append('rect')
+				.attr('width', function(d){return d.val + 'px'})
+				.attr('height', '10px')
+				.attr('fill', colors[0][0])
+				.text(function(d){return d.key});
 
 
 			////////////////////////////////////////////////////////////
