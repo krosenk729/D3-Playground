@@ -58,12 +58,15 @@ router.get("/colors", function (req, res) {
 // Util Function
 
 function countLetters(text){
-	const vowels = text.split('').filter(i => ["a", "e", "i", "o", "u"].indexOf(i) > -1).length;
-	const caps = text.split('').filter(i => i === i.toUpperCase()).length;
-	const extras = text.match(/\W/gmi) ? text.match(/\W/gmi).length : 0;
-	const nums = text.match(/\d/gmi) ? text.match(/\d/gmi).length : 0;
+	const vowels = text.split('').filter(i => ["a", "e", "i", "o", "u"].indexOf(i) > -1).length,
+		consonants = text.length - vowels,
+		caps = text.split('').filter(i => i === i.toUpperCase()).length,
+		lowers = text.length - caps,
+		katherines = text.match(/[katherine]/gmi) ? text.match(/[katherine]/gmi).length : 0,
+		extras = text.match(/\W/gmi) ? text.match(/\W/gmi).length : 0,
+		nums = text.match(/\d/gmi) ? text.match(/\d/gmi).length : 0;
 
-	return {text, vowels, caps, extras, nums};
+	return {text, vowels, consonants, caps, lowers, katherines, extras, nums};
 }
 
 // =============================================================
