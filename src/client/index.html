@@ -58,9 +58,9 @@
 				.domain([0, data.length])
 				.range([0, cardWidth]);
 				console.log(data.length * barWidth * barKeys.length);
-			const barY = d3.scaleLinear();
-
-			console.log('barX', barX);
+			const barY = d3.scaleLinear()
+				.domain([0, Math.max(...data.map(i => Math.max( ...barKeys.map(key => i[key]) )))])
+				.range([0, 100]);
 
 			d3.select('#a2')
 				.append('svg')
@@ -76,7 +76,7 @@
 				.enter()
 				.append('rect')
 				.attr('x', function(d, i){return barWidth*i})
-				.attr('height', function(d){return d.val + 'px'})
+				.attr('height', function(d){return barY(d.val) + 'px'})
 				.attr('width', barWidth + 'px')
 				.attr('fill', colors[0][0])
 				.text(function(d){return d.key});
