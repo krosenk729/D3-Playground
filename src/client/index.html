@@ -47,6 +47,12 @@
 			const keys = Object.keys(data[0]);
 			console.log(colors, data, keys);
 
+			const barHeight = '20px';
+			const barX = d3.scaleLinear()
+				.domain([0, d3.max( data.map(function(d){return d.text.length}))])
+				.range([0, 500]);
+			const barY = d3.scaleLinear();
+
 			d3.select('#a2')
 				.append('svg')
 				.append('g')
@@ -54,7 +60,7 @@
 				.data(data)
 				.enter()
 				.append('g')
-				.attr('transform', function(d){ return `translate(0, ${Math.random()*10})`})
+				.attr('transform', function(d){ return `translate(0, ${Math.floor(Math.random()*50)})`})
 				.selectAll('rect')
 				.data(function(data){
 					return ['vowels', 'caps', 'extras', 'nums'].map(function(key){return {key:key, val: data[key]} });
@@ -63,7 +69,7 @@
 				.append('rect')
 				.attr('y', function(){return Math.random()*100})
 				.attr('width', function(d){return d.val*100 + 'px'})
-				.attr('height', '10px')
+				.attr('height', barHeight)
 				.attr('fill', colors[0][0])
 				.text(function(d){return d.key});
 
@@ -74,11 +80,11 @@
 				.data(data.slice(0, 10))
 				.enter()
 				.append('div')
-				.style('width', function(d){return d.vowels * 20 + 'px'})
+				.style('width', function(d){return d.text.length *10 + 'px'})
 				.style('background', colors[0][1])
 
 				.append('div')
-				.style('width', function(d){return d.text.length + 'px'})
+				.style('width', function(d){return d.vowels * 10 + 'px'})
 				.style('background', colors[0][0])
 				.text(function(d){return d.text})
 				.transition(t)
