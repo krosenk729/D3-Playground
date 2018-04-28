@@ -1,33 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Scraped Onions</title>
+	<title>Report on Trends</title>
 	
-	<meta name=description content="Guess the article source from scraped Onion / Not The Onion articles">
+	<meta name=description content="">
 	<meta charset=utf-8>
 	<meta name=viewport content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/marx/3.0.3/marx.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
-  	<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-  	<link rel="stylesheet" type="text/css" href="assets/styles.css">
+	<script src="https://d3js.org/d3.v5.min.js"></script>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.min.js"></script>
-
-	<!-- App Scripts -->
-	<script src="app.module.js"></script>
-	<script src="nav/top-nav.component.js"></script>
-	<script src="nav/bottom-nav.component.js"></script>
-	<script src="quiz/quiz.component.js"></script>
-	<script src="saved/saved.component.js"></script>
-	<script src="scraped/scraped.component.js"></script>
+	<style type="text/css">
+		div{
+			white-space: nowrap;
+		}
+	</style>
 </head>
-<body ng-app="onionQuiz">
-	<top-nav></top-nav>
-	<div ng-view></div>
-	<bottom-nav></bottom-nav>
+<body>
+	<header class="jumbotron">
+		<h1>Data</h1>
+	</header>
+	<main class="container mx-4 px-4">
+		<div id="a1" class="card px-4">
+		</div>
+	</main>
+
+	<script type="text/javascript">
+		const t = d3.transition()
+			.duration(7000);
+
+		Promise.all([
+			fetch('/api/colors')
+			.then(blob => blob.json()),
+			fetch('/api/trends')
+			.then(blob => blob.json())
+			.then(data => data.slice(0, 10))
+		])
+		.then(res =>{
+			let [colors, data] = res;
+			console.log(colors, data);
+
+			let x0 = d3.scaleBand()
+				.rangeRound([0, 550])
+				.paddingInner(0.1);
+			x0.domain(data.map(function(d){return d.text}));
+
+			d3.select('#a1')
+				.append('svg')
+				.selectAll('g')
+				.data(data)
+				.enter()
+				.append('g')
+				.attr('transform', function(d){return `translate(${x0(d.text)}, 0)`})
+				.selectAll('rect')
+				.data(function(d){return data.slice(0, 1)})
+				.enter()
+				.append('rect')
+
+
+
+
+
+
+				// .style('width', function(d){return d.vowels * 20 + 'px'})
+				// .style('background', colors[0][1])
+				// .append('div')
+				// .style('width', function(d){return d.text.length + 'px'})
+				// .style('background', colors[0][0])
+				// .text(function(d){return d.text})
+				// .transition(t)
+				// .style('background', colors[0][1]);
+		});
+	</script>
 </body>
 </html>

@@ -1,9 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const path = require('path');
+const async = require("asyncawait/async");
+const await = require("asyncawait/await");
+const path = require("path");
 const logger = require("morgan");
-const mongojs = require("mongojs");
-const mongoose = require("mongoose");
 const router = express.Router();
 const app = express();
 
@@ -13,7 +13,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(logger("dev"));
-app.use(express.static( path.join(__dirname, 'src', 'client') ));
+app.use(express.static( path.join(__dirname, "src", "client") ));
 
 // =============================================================
 // Scrape Site Endpoints
@@ -21,140 +21,50 @@ app.use(express.static( path.join(__dirname, 'src', 'client') ));
 const cheerio = require("cheerio");
 const request = require("request");
 
-router
-.get("/rnto", function (req, res) {
-	const site = "https://www.reddit.com/r/nottheonion/";
+router.get("/trends", function (req, res) {
+	const site = "https://medium.com/";
 	request(site, function(req_err, req_res, data){
 		const $ = cheerio.load(data);
 		let scraped = [];
 		
-		$("[data-subreddit='nottheonion'].thing").each((iterator, element) => {
-			scraped.push({
-				title: $(element).find(".top-matter a.title ").text(),
-				img: $(element).find(".thumbnail img").attr("src"),
-				comment_link: "https://www.reddit.com" + $(element).find(".flat-list.buttons .first a").attr("href"),
-				link: $(element).find("a.thumbnail").attr("href")
-			});
-		});
-
-		res.json(scraped);
-	});
-})
-.get("/to", function (req, res) {
-	const site = "https://local.theonion.com/";
-	request(site, function(req_err, req_res, data){
-		const $ = cheerio.load(data);
-		let scraped = [];
-		
-		$(".post-wrapper > article").each((iterator, element) => {
-			scraped.push({
-				title: $(element).find(".entry-title a.js_entry-link").text(),
-				img: $(element).find("picture > source").attr("data-srcset"),
-				link: $(element).find("a.js_entry-link").attr("href")
-			});
+		$("h3.ui-h3").each((iterator, element) => {
+			let title = $(element).text();
+			scraped.push(countLetters(title));
 		});
 
 		res.json(scraped);
 	});
 });
 
+router.get("/colors", function (req, res) {
+	console.log("running");
+	const site = "https://webgradients.com/";
+	request(site, function(req_err, req_res, data){
+		const $ = cheerio.load(data);
+		let pairs = [];
 
+		$(".gradient__colors_box").each((iterator, element)=>{
+			pairs.push( [
+				$(element).find(".gradient__color").first().text(),
+				$(element).find(".gradient__color").last().text()
+				] );
+		});
+
+		res.json(pairs);
+	});
+});
 
 // =============================================================
-// Mongo, Mongoose CRUD 
+// Util Function
 
-const db = require("../models");
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/my_db";
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI,{
-	useMongoClient: true,
-	server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
-});
+function countLetters(text){
+	const vowels = text.split('').filter(i => ["a", "e", "i", "o", "u"].indexOf(i) > -1).length;
+	const caps = text.split('').filter(i => i === i.toUpperCase()).length;
+	const extras = text.match(/\W/gmi) ? text.match(/\W/gmi).length : 0;
+	const nums = text.match(/\d/gmi) ? text.match(/\d/gmi).length : 0;
 
-router
-.get("/saved", function(req, res){
-
-	db.Article.find()
-	.populate("comments")
-	.then(data => {
-		res.json(data);
-	})
-	.catch(err => {
-		res.json(err);
-	});
-
-})
-.post("/article", function(req, res){
-	console.log(req.body);
-	db.Article.create(req.body)
-	.then(data => {
-		res.json(data); 
-	})
-	.catch(err => {
-		res.json(err);
-	});
-
-})
-.get("/article/:articleid", function(req, res){
-
-	db.Article.find({_id: req.params.articleid})
-	.populate("comments")
-	.then(data => {
-		res.json(data);
-	})
-	.catch(err => {
-		res.json(err);
-	});
-
-})
-.delete("/article/:articleid", function(req, res){
-
-	db.Article.findOneAndRemove({_id: req.params.articleid})
-	.then(data => {
-		res.json(data);
-	})
-	.catch(err => {
-		res.json(err);
-	});
-
-})
-.post("/comment/:articleid", function(req, res){
-	console.log(req.body);
-	db.Comment.create(req.body)
-	.then(data => {
-		return db.Article.findOneAndUpdate({_id: req.params.articleid}, {$push: {comments: data._id}}, {new: true});
-	})
-	.then(data => {
-		res.json(data);
-	})
-	.catch(err => {
-		res.json(err);
-	});
-
-})
-.put("/comment/:commentid", function(req, res){
-	console.log("PUT REQUEST FOR... " + req.params.commentid);
-	console.log(req.body);
-	db.Comment.findOneAndUpdate({_id: req.params.commentid}, {$set: {text: req.body.text}})
-	.then(data => {
-		res.json(data);
-	})
-	.catch(err => {
-		res.json(err);
-	});
-
-})
-.delete("/comment/:commentid", function(req, res){
-	console.log(req.body);
-	db.Comment.findOneAndRemove({_id: req.params.commentid})
-	.then(data => {
-		res.json(data);
-	})
-	.catch(err => {
-		res.json(err);
-	});
-});
-
+	return {text, vowels, caps, extras, nums};
+}
 
 // =============================================================
 // Export
