@@ -34,10 +34,14 @@
 			.then(blob => blob.json()),
 			fetch('/api/trends')
 			.then(blob => blob.json())
+			.then(data => data.slice(0, 10))
 		])
 		.then(res =>{
 			let [colors, data] = res;
-			// console.log(colors, data);
+			const keys = Object.keys(data[0]);
+			console.log(colors, data, keys);
+
+			
 			d3.select('#a1')
 				.selectAll('div')
 				.data(data.slice(0, 10))
