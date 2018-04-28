@@ -14,6 +14,10 @@
 		div{
 			white-space: nowrap;
 		}
+
+		.card{
+			padding: 2em;
+		}
 	</style>
 </head>
 <body>
@@ -21,8 +25,10 @@
 		<h1>Data</h1>
 	</header>
 	<main class="container mx-4 px-4">
-		<div id="a1" class="card px-4">
-		</div>
+		<div id="a1" class="card"></div>
+		<div id="a2" class="card"></div>
+		<div id="a3" class="card"></div>
+		<div id="a4" class="card"></div>
 	</main>
 
 	<script type="text/javascript">
@@ -41,7 +47,23 @@
 			const keys = Object.keys(data[0]);
 			console.log(colors, data, keys);
 
-			
+			d3.select('#a2')
+				.selectAll('div')
+				.data(data.slice(0, 10))
+				.enter()
+				.append('div')
+				.style('width', function(d){return d.vowels * 20 + 'px'})
+				.style('background', colors[2][1])
+
+				.append('div')
+				.style('width', function(d){return d.text.length + 'px'})
+				.style('background', colors[2][0])
+				.text(function(d){return d.text})
+				.transition(t)
+				.style('background', colors[2][1]);
+
+
+			////////////////////////////////////////////////////////////
 			d3.select('#a1')
 				.selectAll('div')
 				.data(data.slice(0, 10))
@@ -49,6 +71,7 @@
 				.append('div')
 				.style('width', function(d){return d.vowels * 20 + 'px'})
 				.style('background', colors[0][1])
+
 				.append('div')
 				.style('width', function(d){return d.text.length + 'px'})
 				.style('background', colors[0][0])
