@@ -52,8 +52,8 @@
 			////////////////////////////////////////////////////////////
 
 			const barKeys = ['vowels', 'caps', 'katherines'];
-			const cardWidth = document.getElementById('a2').clientWidth;
-			const barWidth = 20;
+			const cardWidth = document.getElementById('a2').clientWidth - 120;
+			const barWidth = cardWidth / data.length / 4;
 			const barX = d3.scaleLinear()
 				.domain([0, data.length])
 				.range([0, cardWidth]);
