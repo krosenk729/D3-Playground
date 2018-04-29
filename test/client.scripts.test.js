@@ -17,7 +17,7 @@ describe("getAllAlphabet", function(){
   });
 
   it("should have one property per letter of the alphabet", () => {
-  	assert.hasAllKeys(client.getAllAlphabet("Hello World"), 'ABCDEFHIJKLMNOPQRSTUVWXYZ'.split(''));
+  	assert.hasAllKeys(client.getAllAlphabet("Hello World"), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''));
   });
 
   it("should count the number of letters in a string", () => {

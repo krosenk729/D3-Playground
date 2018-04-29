@@ -19,6 +19,12 @@
 		.card{
 			padding: 2em;
 		}
+
+		.card h3{
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
 	</style>
 </head>
 <body>
@@ -26,13 +32,19 @@
 		<h1>Data</h1>
 	</header>
 	<main class="container mx-4 px-4">
-		<div id="a1" class="card"></div>
-		<div id="a2" class="card"></div>
-		<div id="a3" class="card"></div>
+		<div id="a1" class="card">
+			<h3>Title's Non-Char Characters</h3>
+		</div>
+		<div id="a2" class="card">
+			<h3>Vowels, Caps & Katherine Letters</h3>
+		</div>
+		<div id="a3" class="card">
+			<h3>Letter Distributions</h3>
+		</div>
 		<div id="a4" class="card"></div>
 	</main>
 
-	<script src="text/javascript">
+	<script type="text/javascript">
 		const t = d3.transition()
 			.duration(7000);
 
@@ -46,7 +58,31 @@
 		.then(res =>{
 			let [colors, data] = res;
 			const keys = Object.keys(data[0]);
-			console.log(colors, data, keys);
+			// console.log(colors, data, keys);
+
+			////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////
+			const [pieLabels, pieData] = objectToTwo( getAllAlphabet(data[0].text) );
+
+			console.log(pieData, pieLabels);
+			const arc = d3.arc()
+			.innerRadius(0)
+			.outerRadius(150)
+			.startAngle(d => d.startAngle)
+			.endAngle(d => d.endAngle);
+
+			d3.select('#a3')
+				.append('svg')
+				.append('g')
+				.attr('transform', `translate(200, 200)`)
+				.selectAll('path')
+				.data( d3.pie()(pieData) )
+				.enter()
+				.append('path')
+				.attr('d', arc)
+				.attr('fill', '#dedede')
+				.attr('stroke', '#fff');
 
 			////////////////////////////////////////////////////////////
 			////////////////////////////////////////////////////////////
@@ -66,6 +102,7 @@
 
 			d3.select('#a2')
 				.append('svg')
+				.style('min-height', barHeight + 10)
 				.selectAll('g')
 				.data(data)
 				.enter()
@@ -78,6 +115,7 @@
 				.enter()
 				.append('rect')
 				.attr('x', function(d, i){return barWidth*i})
+				.attr('y', function(d){return barY(d.val)})
 				.attr('height', function(d){return barHeight - barY(d.val) + 'px'})
 				.attr('width', barWidth + 'px')
 				.attr('fill', colors[0][0])
@@ -87,12 +125,19 @@
 			////////////////////////////////////////////////////////////
 			////////////////////////////////////////////////////////////
 			////////////////////////////////////////////////////////////
+			// const horizX = d3.scaleLinear([0, 10]).range([0, 1000]);
+			// const horizAxis = d3.axisTop()
+			// 	.scale(horizX)
+			// 	.ticks(10);
+
 			d3.select('#a1')
 				.selectAll('div')
 				.data(data.slice(0, 10))
 				.enter()
 				.append('div')
 				.attr('class', 'bar__title')
+				.attr('data-title', function(d){return d.text})
+				// .attr('data-hover', d.extras + d.nums)
 				.style('width', function(d){return d.text.length *10 + 'px'})
 				.style('background', colors[0][1])
 
