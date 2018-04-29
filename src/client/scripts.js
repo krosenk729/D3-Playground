@@ -20,5 +20,24 @@ const randFromDimArry = function(arr){
 	return arr[randIndex][randPairIndex]
 }
 
+const hexToRGB = function(hex){
+	hex = hex.match(/\w+/gi)[0];
+	if (hex.length === 3) {
+        let _t = hex.split(''), 
+        	hr = _t[0], 
+        	hg = _t[1], 
+        	hb = _t[2];
+        return hexToRGB("" + hr + hr + hg + hg + hb + hb);
+    }
+    let _c = [0, 2, 4]
+        .map(i => hex.substr(i, i+2))
+        .map(i => parseInt(i, 16)),
+        red = _c[0],
+        green = _c[1],
+        blue = _c[2];
+
+	return [red, green, blue];
+}
+
 // Uncomment when testing -- otherwise, browsers do not support this
 // module.exports = { getAllAlphabet, objectToTwo, randFromDimArry };

@@ -65,7 +65,8 @@
 			////////////////////////////////////////////////////////////
 			const [pieLabels, pieData] = objectToTwo( getAllAlphabet(data[0].text) );
 
-			console.log(pieData, pieLabels);
+			// console.log(pieData, pieLabels);
+			const pieColors = hexToRGB(randFromDimArry(colors));
 			const arc = d3.arc()
 			.innerRadius(0)
 			.outerRadius(150)
@@ -82,7 +83,7 @@
 				.enter()
 				.append('path')
 				.attr('d', arc)
-				.attr('fill', (d,i) => `rgb(0, 0, ${255 - d.data * 35})`)
+				.attr('fill', (d,i) => `rgb(${pieColors[0]}, ${pieColors[1]}, ${pieColors[2] * d.data} )`)
 				.attr('stroke', '#fff');
 
 			////////////////////////////////////////////////////////////
