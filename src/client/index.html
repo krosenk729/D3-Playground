@@ -82,7 +82,7 @@
 				.enter()
 				.append('path')
 				.attr('d', arc)
-				.attr('fill', (d,i) => randFromDimArry(colors))
+				.attr('fill', (d,i) => `rgb(0, 0, ${255 - d.data * 35})`)
 				.attr('stroke', '#fff');
 
 			////////////////////////////////////////////////////////////
@@ -96,7 +96,7 @@
 			const barX = d3.scaleLinear()
 				.domain([0, data.length])
 				.range([0, cardWidth]);
-				console.log(data.length * barWidth * barKeys.length);
+
 			const barY = d3.scaleLinear()
 				.domain([0, Math.max(...data.map(i => Math.max( ...barKeys.map(key => i[key]) )))])
 				.range([0, barHeight]);
