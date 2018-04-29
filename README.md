@@ -1,6 +1,8 @@
 # D3 for the sake of D3
 
 
++ Tests with (Chai)[http://www.chaijs.com/api/assert/]
+
 ---
 
 ### DIY
