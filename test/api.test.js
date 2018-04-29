@@ -16,7 +16,6 @@ const should = chai.should();
 const expect = chai.expect;
 chai.use(chaiHttp);
 
-
 describe("Colors", function() {
   describe("/GET /api/colors", function(){
 
